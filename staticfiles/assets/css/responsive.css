@@ -1,0 +1,129 @@
+:root {
+  /* === RANGLAR === */
+  --yellow-color: #FFE743;
+  --grey-color: #EDEDED;
+  --blue-color: #0051FF;
+
+  /* === SECTION TITLE FONT SIZE === */
+  --section-title-xl: 48px;
+  --section-title-lg: 40px;
+  --section-title-md: 32px;
+  --section-title-sm: 28px;
+
+  /* === DESCRIPTION TITLE FONT SIZE === */
+  --desc-title-xl: 28px;
+  --desc-title-lg: 24px;
+  --desc-title-md: 20px;
+  --desc-title-sm: 18px;
+
+  /* === DESCRIPTION PARAGRAPH FONT SIZE === */
+  --desc-xl: 20px;
+  --desc-lg: 18px;
+  --desc-md: 16px;
+  --desc-sm: 14px;
+}
+
+@media (min-width: 1200px) {
+  .section-title {
+    font-size: var(--section-title-xl);
+  }
+  .description-title {
+    font-size: var(--desc-title-xl);
+  }
+  .description {
+    font-size: var(--desc-xl);
+  }
+}
+
+
+
+@media (max-width: 1199.98px) and (min-width: 992px) {
+  .section-title {
+    font-size: var(--section-title-lg);
+  }
+  .description-title {
+    font-size: var(--desc-title-lg);
+  }
+  .description {
+    font-size: var(--desc-lg);
+  }
+}
+
+@media (max-width: 991.98px) and (min-width: 768px) {
+  .section-title {
+    font-size: var(--section-title-md);
+  }
+  .description-title {
+    font-size: var(--desc-title-md);
+  }
+  .description {
+    font-size: var(--desc-md);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-title {
+    font-size: var(--section-title-sm);
+  }
+  .description-title {
+    font-size: var(--desc-title-sm);
+  }
+  .description {
+    font-size: var(--desc-sm);
+  }
+}
+
+
+/* Header responsiv background va matn ranglari */
+header {
+  transition: background-color 0.3s ease;
+}
+
+/* LG va katta ekranlarda oq header va qora matn */
+@media (min-width: 992px) {
+  header {
+    background-color: white;
+  }
+  header .navbar-brand,
+  header .nav-link,
+  header .dropdown > a {
+    color: black !important;
+  }
+}
+
+/* Kichik ekranlarda oq matn */
+@media (max-width: 991.98px) {
+  header .navbar-brand,
+  header .nav-link,
+  header .dropdown > a {
+    color: white !important;
+  }
+}
+
+/* Offcanvas backdrop */
+.offcanvas-backdrop {
+  backdrop-filter: blur(2px);
+  background-color: rgba(0,0,0,0.5) !important;
+}
+
+/* Offcanvas to'liq balandlik */
+.offcanvas {
+  height: 100vh !important;
+}
+
+
+.doctor-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .doctor-img {
+    margin-top: 2rem;
+  }
+
+  .why-us .col-md-4 {
+    margin-bottom: 2rem;
+  }
+}

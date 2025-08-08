@@ -1,0 +1,824 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik">
+  <meta name="description" content="Yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar. Individual yondashuv, sifatli va xavfsiz jarrohlik xizmatlari.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+
+  <meta property="og:title" content="Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik">
+  <meta property="og:description" content="Yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar. Individual yondashuv, sifatli va xavfsiz jarrohlik xizmatlari.">
+  <meta property="og:image" content="https://sizningsaytingiz.uz/assets/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik">
+  <meta property="twitter:description" content="Yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar. Individual yondashuv, sifatli va xavfsiz jarrohlik xizmatlari.">
+  <meta property="twitter:image" content="https://sizningsaytingiz.uz/assets/images/og-image.jpg">
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Sizning Ismingiz yoki Klinikangiz nomi">
+  <meta name="keywords" content="yuz jarrohligi, yuz jarrohi, plastik jarrohlik, estetika, xavfsiz jarrohlik, tibbiyot, klinika, bemorlar uchun">
+
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"></noscript>
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet"></noscript>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"></noscript>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static './assets/css/responsive.css' %}">
+  <link rel="shortcut icon" href="{% static './assets/images/favicon.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
+</head>
+<body>
+
+
+    <!-- content here -->
+
+
+<!-- HEADER -->
+<header class="position-absolute w-100 z-3" role="banner">
+  <nav class="navbar navbar-expand-lg" role="navigation" aria-label="Asosiy navigatsiya">
+    <div class="container d-flex justify-content-between align-items-center">
+      
+      <!-- Logo -->
+      <a class="navbar-brand fw-bold text-white" href="#" aria-label="Bosh sahifa">
+        <img 
+          src="{% static './assets/images/logo.png' %}" 
+          alt="Yuz jag’ Jarrohligi logotipi" 
+          class="img-fluid d-none d-lg-block" 
+          style="max-width: 175px; height: auto;" 
+          loading="lazy"
+        >
+        <img 
+          src="{% static './assets/images/logo-sm.png' %}" 
+          alt="Yuz jag’ Jarrohligi kichik logotipi" 
+          class="img-fluid d-lg-none d-block" 
+          style="max-width: 175px; height: auto;" 
+          loading="lazy"
+        >
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="navbar-nav d-none d-lg-flex flex-row gap-4" role="menubar">
+        <li class="nav-item" role="none">
+          <a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#" role="menuitem" tabindex="0">SHIFOKORLAR</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link text-white scroll-link" data-target="natijalar" href="#" role="menuitem" tabindex="0">NATIJALAR</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link text-white scroll-link" data-target="bemorlar" href="#" role="menuitem" tabindex="0">BEMORLAR FIKRLARI</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- Language Dropdown -->
+        <div class="dropdown d-none d-lg-flex">
+          <a 
+            class="text-white dropdown-toggle text-decoration-none small" 
+            href="#" 
+            role="button" 
+            id="languageDropdown" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false" 
+            aria-haspopup="true"
+          >
+            UZB
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
+            <li><a class="dropdown-item" href="#" role="menuitem">UZB</a></li>
+            <li><a class="dropdown-item" href="#" role="menuitem">RUS</a></li>
+            <li><a class="dropdown-item" href="#" role="menuitem">ENG</a></li>
+          </ul>
+        </div>
+
+        <!-- Consultation Button -->
+        <a 
+          href="#" 
+          class="btn btn-warning fw-semibold px-3 py-2 rounded-pill d-none d-lg-inline-block" 
+          data-bs-toggle="modal" 
+          data-bs-target="#bookingModal" 
+          role="button"
+        >
+          KONSULTATSIYA OLISH <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button 
+          class="navbar-toggler border-0 d-lg-none" 
+          type="button" 
+          data-bs-toggle="offcanvas" 
+          data-bs-target="#mobileMenu" 
+          aria-controls="mobileMenu" 
+          aria-label="Mobil menyuni ochish"
+        >
+          <i class="fa-solid fa-bars text-light"></i>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Offcanvas Mobile Menu -->
+<div 
+  class="offcanvas offcanvas-start text-white" 
+  tabindex="-1" 
+  id="mobileMenu" 
+  aria-labelledby="mobileMenuLabel" 
+  style="background-color: #5475FD;"
+>
+  <div class="offcanvas-header">
+    <h5 id="mobileMenuLabel" class="offcanvas-title fw-bold">
+      <img src="{% static './assets/images/logo-sm.png' %}" class="img-fluid" width="150" alt="Yuz jag’ Jarrohligi logotipi">
+    </h5>
+    <button 
+      type="button" 
+      class="btn-close btn-close-white" 
+      data-bs-dismiss="offcanvas" 
+      aria-label="Yopish"
+    ></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column justify-content-between">
+
+    <nav>
+      <ul class="navbar-nav mb-4" role="menu">
+        <li class="nav-item" role="none">
+          <a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#" role="menuitem" tabindex="0">SHIFOKORLAR</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link text-white scroll-link" data-target="natijalar" href="#" role="menuitem" tabindex="0">NATIJALAR</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link text-white scroll-link" data-target="bemorlar" href="#" role="menuitem" tabindex="0">BEMORLAR FIKRLARI</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="dropdown mb-4">
+      <a 
+        class="text-white dropdown-toggle text-decoration-none small" 
+        href="#" 
+        role="button" 
+        id="mobileLanguageDropdown" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false"
+      >
+        UZB
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="mobileLanguageDropdown" role="menu">
+        <li><a class="dropdown-item" href="#" role="menuitem">UZB</a></li>
+        <li><a class="dropdown-item" href="#" role="menuitem">RUS</a></li>
+        <li><a class="dropdown-item" href="#" role="menuitem">ENG</a></li>
+      </ul>
+    </div>
+
+    <address class="small mb-0">
+      <p class="fw-semibold mb-1">MANZIL</p>
+      <p class="mb-0">📍 Toshkent shahri, Yashnobod tumani, Olimkent ko‘chasi, 32 uy</p>
+      <p class="mb-0">📍 Andijon shahri, Otabekov ko'chasi, 4-B uy</p>
+      <p class="mb-0">☎️ +998 90 529 53 34</p>
+    </address>
+
+    <div class="d-flex gap-3 mt-4" aria-label="Ijtimoiy tarmoqlar">
+      <a href="https://www.instagram.com/dr_abobakirov" class="text-white fs-5" aria-label="Instagram - dr_abobakirov"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.instagram.com/dr_akmal_khakimov" class="text-white fs-5" aria-label="Instagram - dr_akmal_khakimov"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+
+  </div>
+</div>
+
+  <!-- start main -->
+
+
+    <div id="messages-container" class="position-fixed top-0 start-50 translate-middle-x mt-5 py-5" style="z-index: 1055; width: 400px; max-width: 90vw;">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show py-3" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <main>
+
+
+  <!-- HERO SECTION -->
+<section class="position-relative min-vh-100 overflow-hidden" aria-label="Yuz sohasi kasalliklari haqida umumiy ma'lumot">
+
+  <!-- Surgeons image: loading="eager" bilan tez yuklash, width va height qo'shildi -->
+  <img 
+    src="{% static './assets/images/surgeons.png' %}"  
+    alt="Surgeons jamoasi rasmi" 
+    class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" 
+    loading="eager"
+    width="1920" height="1080"  <
+    decoding="async" 
+  />
+
+  <!-- Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50" aria-hidden="true"></div>
+
+
+
+
+  <!-- Text -->
+  <div class="container position-relative z-2 d-flex flex-column justify-content-center align-items-start min-vh-100 text-white" data-aos="fade-up">
+    
+
+    <h1 class="section-title fw-bold mb-4">Yuz sohasi kasalliklarining zamonaviy yechimi</h1>
+    <p class="description mb-4 col-lg-6">Tajribali jarrohlar jamoasi bilan yuzingizni tabiiy holatiga qaytaring: estetik ko‘rinish, og‘riqsiz holat, mukammal simmetriya.</p>
+    <a href="#" class="btn btn-warning fw-semibold px-4 py-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Konsultatsiya olish">KONSULTATSIYA OLISH <i class="fa-solid fa-arrow-right ms-2"></i></a>
+  </div>
+</section>
+
+<section class="py-5 my-5 registration" aria-labelledby="registration-title">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-down">
+        <div class="register-info px-3">
+          <h2 id="registration-title" class="fw-bold py-3 title">Xalqaro tajriba</h2>
+          <p class="text-muted description my-3 mb-4">
+            Biz yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar jamoasi sifatida,
+            har bir bemor uchun individual va puxta rejalashtirilgan jarrohlik protseduralarini taqdim etamiz.
+          </p>
+          <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">QABULGA YOZILISH <i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 text-center" data-aos="fade-up" aria-label="YouTube video">
+        <div class="register-video rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16 / 9;">
+          <iframe
+            src="https://www.youtube.com/embed/TzN_pcxY_d4"
+            title="Yuz jarrohligi haqida YouTube video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            style="width: 100%; height: 100%; border: none; border-radius: 16px;"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats py-5 my-5" aria-label="Statistik ma'lumotlar">
+  <div class="container">
+    <div class="row text-center">
+
+      <div class="col-md-4 py-3" data-aos="fade-up">
+        <div class="stats-group">
+          <h3 class="title fs-2">
+            <span class="counter" data-target="3500" aria-live="polite" aria-atomic="true">0</span>+
+          </h3>
+          <hr aria-hidden="true">
+          <p class="description text-muted">Muvaffaqiyatli amalga oshirilgan operatsiyalar</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 py-3" data-aos="fade-up">
+        <div class="stats-group">
+          <h3 class="title fs-2">
+            <span class="counter" data-target="2000" aria-live="polite" aria-atomic="true">0</span>+
+          </h3>
+          <hr aria-hidden="true">
+          <p class="description text-muted">Yuz suyaklari singanda operatsiyalar</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 py-3" data-aos="fade-up">
+        <div class="stats-group">
+          <h3 class="title fs-2">
+            <span class="counter" data-target="100" aria-live="polite" aria-atomic="true">0</span>+
+          </h3>
+          <hr aria-hidden="true">
+          <p class="description text-muted">Ortognaik operatsiyalar</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 py-3" data-aos="fade-up">
+        <div class="stats-group">
+          <h3 class="title fs-2">
+            <span class="counter" data-target="1000" aria-live="polite" aria-atomic="true">0</span>+
+          </h3>
+          <hr aria-hidden="true">
+          <p class="description text-muted">Yuz sohasi ankologiyasi</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 py-3" data-aos="fade-up">
+        <div class="stats-group">
+          <h3 class="title fs-2">
+            <span class="counter" data-target="200" aria-live="polite" aria-atomic="true">0</span>+
+          </h3>
+          <hr aria-hidden="true">
+          <p class="description text-muted">Ankilozda artroplastika</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 py-3" data-aos="fade-up">
+        <div class="stats-group">
+          <h3 class="title fs-2">
+            <span class="counter" data-target="200" aria-live="polite" aria-atomic="true">0</span>+
+          </h3>
+          <hr aria-hidden="true">
+          <p class="description text-muted">Yuz sohasi qayta tiklov operatsiyasi</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="why-us py-5 my-5 bg-light" aria-labelledby="whyus-title">
+  <div class="container">
+    <div class="row align-items-center text-center">
+
+      <div class="col-md-4 d-none d-md-flex justify-content-center" data-aos="fade-down" aria-hidden="true">
+        <img src="{% static './assets/images/doctor-left.png' %}" alt="Doktor rasmi" class="img-fluid doctor-img" loading="lazy" />
+      </div>
+
+      <div class="col-12 col-md-4" data-aos="zoom-in">
+        <h2 id="whyus-title" class="fw-bold mb-3">Nima uchun biz ?</h2>
+        <p class="fw-semibold">Sizning sog‘lig‘ingiz va xavfsizligingiz — bizning birinchi ustuvorligimiz!</p>
+        <p class="text-muted">
+          Biz yuz jag‘ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar jamoasi sifatida,
+          har bir bemor uchun individual va puxta rejalashtirilgan jarrohlik protseduralarini taqdim etamiz.
+          Operatsiyadan oldin barcha jarayonlar aniq va shaffof rejalashtiriladi, shunda siz hech qanday
+          noaniqlik yoki qo‘rquv his qilmasligingizga ishonch hosil qilasiz.
+        </p>
+      </div>
+
+      <div class="col-md-4 d-none d-md-flex justify-content-center" data-aos="fade-up" aria-hidden="true">
+        <img src="{% static './assets/images/doctor-right.png' %}" alt="Doktor rasmi" class="img-fluid doctor-img" loading="lazy" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-5 my-5" id="shifokorlar">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+
+      <!-- Shifokor 1: Rasm -->
+      <div class="col-lg-6 d-flex" data-aos="fade-right">
+        <img src="{% static './assets/images/first-doctor.png' %}" alt="Davronbek Abobakirov" 
+             class="img-fluid rounded w-100" style="object-fit: cover;">
+      </div>
+
+      <!-- Shifokor 1: Ma'lumot -->
+      <div class="col-lg-6 d-flex">
+        <div class="bg-light p-4 rounded w-100 d-flex flex-column justify-content-between">
+          <div>
+            <h4 class="fw-bold mb-1" data-aos="fade-up">Davronbek Abobakirov</h4>
+            <p class="text-muted mb-3" data-aos="fade-up">Professional yuz jag' jarrohi</p>
+            <hr class="w-25 border-dark opacity-100 mb-3"/>
+            <p class="py-3" data-aos="fade-up">
+              15 yildan ortiq tajribaga ega yuz jag‘ jarrohi. Yuz suyaklari siniq­larini davolash, yuz va jag‘ sohasidagi o‘smalarni olib tashlash, hamda ortognatik jarrohlik bo‘yicha mutaxassis.
+            </p>
+            <p class="py-3" data-aos="fade-up">
+              <strong>“OrtogOnBlender”</strong> 3D rejalashtirish platformasi bo‘yicha yetuk mutaxassis, MDHdagi rasmiy vakillardan biri
+            </p>
+            <p class="py-3" data-aos="fade-up">
+              <strong>Malaka oshirish va xalqaro tajriba:</strong><br>
+              Yuz jag’ jarrohligi sohasida magistrlik diplomiga ega<br>
+              Itali­yadagi “OrgnaticaRoma” ortognatik jarrohlik jamoasi bilan hamkorlikda amaliy tajriba<br>
+              Janubiy Koreyada “Ortognatik operatsiyalarga virtual tayyorgarlik” seminari<br>
+              Hindiston, “ARTEMIS” klinikasida “Minimally invasive maxillofacial surgery” bo‘yicha amaliyot
+            </p>
+          </div>
+          <div class="mt-4">
+            <a href="https://www.instagram.com/dr_abobakirov/" target="_blank" class="text-dark me-3 fs-5"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/davrobakirov" target="_blank" class="text-dark fs-5"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shifokor 2: Rasm -->
+      <div class="col-lg-6 d-flex" data-aos="fade-right">
+        <img src="{% static './assets/images/second-doctor.png' %}" alt="Akmal Hakimov" 
+             class="img-fluid rounded w-100" style="object-fit: cover;">
+      </div>
+
+      <!-- Shifokor 2: Ma'lumot -->
+      <div class="col-lg-6 d-flex">
+        <div class="bg-light p-4 rounded w-100 d-flex flex-column justify-content-between">
+          <div>
+            <h4 class="fw-bold mb-1" data-aos="fade-up">Akmal Hakimov</h4>
+            <p class="text-muted mb-3" data-aos="fade-up">Professional yuz jag' jarrohi</p>
+            <hr class="w-25 border-dark opacity-100 mb-3"/>
+            <p class="py-3" data-aos="fade-up">
+              15 yildan oshiq tajribaga ega yuz jag' jarroxi, zamonaviy yondashuv va yuzlab bemorlarning sog‘lig‘ini tiklashga hissa qo‘shgan mutaxassis. Dr. Akmal Hakimov yuz jag‘ sohasidagi jarrohlik bo‘yicha O‘zbekistonda yetakchi mutaxassislardan biridir.
+            </p>
+            <p class="py-3" data-aos="fade-up">
+              <strong>Malaka oshirish va xalqaro tajriba:</strong><br>
+              Yuz jag' jarroxligi sohasida magistrlik diplomiga ega<br>
+              Yuz jarohatlarini zamonaviy davolash va ortognatik operatsiyalar<br>
+              bo'yicha Rossiya Federatsiyasida malaka oshirgan
+            </p>
+          </div>
+          <div class="mt-4">
+            <a href="https://www.instagram.com/dr_akmal_khakimov/" target="_blank" class="text-dark me-3 fs-5"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/dr_akmal_hakimov" target="_blank" class="text-dark fs-5"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5 my-5 certificate" aria-label="Litsenziya va sertifikatlar">
+  <div class="container-fluid">
+    <h2 class="section-title text-center mb-lg-4 mb-0">Litsenziya va Sertifikatlar</h2>
+    <div class="swiper mySwiper p-5" aria-roledescription="carousel">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 1" class="cert-img swiper-image img-fluid" loading="lazy" />
+        </div>
+        <div class="swiper-slide">
+          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 2" class="cert-img swiper-image img-fluid" loading="lazy" />
+        </div>
+        <div class="swiper-slide">
+          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 3" class="cert-img swiper-image img-fluid" loading="lazy" />
+        </div>
+        <div class="swiper-slide">
+          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 4" class="cert-img swiper-image img-fluid" loading="lazy" />
+        </div>
+        <!-- Repeat sertifikatlar kerak bo'lsa shu yerga qo'shilsin -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <section class="py-5 bg-light" id="natijalar" aria-labelledby="operations-title">
+  <div class="container">
+    <h2 id="operations-title" class="section-title text-center mb-5">Amalga oshiriladigan operatsiyalar</h2>
+    <div class="row g-4">
+      <!-- CARD 1 -->
+      <article class="col-lg-3 col-md-6 col-12" role="region" aria-label="Yuz jag' sohasi jarohatlari">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{% static './assets/images/first.png' %}" class="card-img-top" alt="Jag' jarohatlari rasmi" loading="lazy" />
+          <div class="card-body">
+            <h5 class="descriptionitle mb-2 py-2">Yuz jag' sohasi jarohatlari</h5>
+            <p class="description text-muted py-2">Pastki jag', yuqori jag', peshona suyaklari, orbit va boshqa suyaklar jarohatlari avtomatik amalga oshiriladi.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="col-lg-3 col-md-6 col-12" role="region" aria-label="Yuz jag' qayta tiklov operatsiyasi">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{% static './assets/images/second.png' %}" class="card-img-top" alt="Tiklov operatsiya rasmi" loading="lazy" />
+          <div class="card-body">
+            <h5 class="title mb-2 py-2">Yuz jag' qayta tiklov operatsiyasi</h5>
+            <p class="text-muted description py-2">Deformatsiyaga uchragan qismlar tabiiy holatga keltiriladi.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="col-lg-3 col-md-6 col-12" role="region" aria-label="Ortognatik jarrohlik">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{% static './assets/images/third.png' %}" class="card-img-top" alt="Ortognatik jarrohlik rasmi" loading="lazy" />
+          <div class="card-body">
+            <h5 class="title mb-2 py-2">Ortognatik jarrohlik</h5>
+            <p class="text-muted description py-2">Yuz suyaklari shakli va joylashuvini tuzatish orqali funksional muammo bartaraf etiladi.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 4 -->
+      <article class="col-lg-3 col-md-6 col-12" role="region" aria-label="Yuz sohasi ankologik kasalliklari">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{% static './assets/images/fourth.png' %}" class="card-img-top" alt="Ankologik kasalliklar rasmi" loading="lazy" />
+          <div class="card-body">
+            <h5 class="title mb-2 py-2">Yuz sohasi ankologik kasalliklari</h5>
+            <p class="text-muted description py-2">Yuz va jag'dagi shishlar individual yondashuv bilan davolanadi.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-2 py-md-5" id="bemorlar" aria-labelledby="patients-operations-title">
+  <div class="container position-relative">
+    <div class="row align-items-center mb-4">
+      <div class="col-sm-12 col-md-6 py-2">
+        <h2 id="patients-operations-title" class="section-title m-0">Amalga oshirilgan operatsiyalar</h2>
+      </div>
+      <div class="col-sm-12 col-md-6 py-2 text-start text-md-end">
+        <div class="swiper-buttons d-inline-flex gap-2" role="group" aria-label="Video slayder boshqaruv tugmalari">
+          <button class="btn btn-dark rounded-circle swiper-button-prev-custom" aria-label="Oldingi video">
+            <i class="fa fa-chevron-left"></i>
+          </button>
+          <button class="btn btn-dark rounded-circle swiper-button-next-custom" aria-label="Keyingi video">
+            <i class="fa fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper videoSwiper" role="list" aria-live="polite">
+      <div class="swiper-wrapper py-5">
+        <!-- Slides generated from links -->
+         {% for patient in patients %}
+        <div class="swiper-slide video-slide" role="listitem">
+          <div class="video-thumb" tabindex="0" role="button" aria-label="YouTube video: {{patient.video_link}}" data-video-url="{{patient.video_link}}">
+            <span class="play-icon"><i class="fa fa-play-circle"></i></span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 my-5 registration" aria-labelledby="intl-experience-title">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Chap taraf: matn -->
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-down">
+        <div class="register-info px-3">
+          <h2 id="intl-experience-title" class="fw-bold py-3 title">Xalqaro tajriba</h2>
+          <p class="text-muted description my-3 mb-4">
+            Biz yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar jamoasi sifatida,
+            har bir bemor uchun individual va puxta rejalashtirilgan jarrohlik protseduralarini taqdim etamiz.
+          </p>
+          <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">
+            QABULGA YOZILISH <i class="fa-solid fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- O'ng taraf: video iframe -->
+      <div class="col-lg-6 text-center" data-aos="fade-up">
+        <div class="register-video rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9;">
+          <iframe
+            src="https://www.youtube.com/embed/jkyFrW6NQT0?si=8MRkxNuIqyIJVtNB" 
+            title="Xalqaro tajriba haqida YouTube video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+            style="width: 100%; height: 100%; border: none; border-radius: 16px;">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="faq-section py-5" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="faq p-md-5 p-3 my-5">
+      <h2 id="faq-title" class="section-title mb-4">Savol javoblar</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+          <span>Savol: Operatsiyadan so'ng yuzda chandiqlar qoladimi?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question">
+          Operatsiyalar asosan og'iz ichi kesmasi bilan amalga oshiriladi va yuzda ko'zga ko'rinarli chandiqlar qolmaydi!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+          <span>Savol: Operatsiyadan nechi kundan keyin bemalol ovqatlanish mumkin?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question">
+          Operatsiyadan 3-5 kundan keyin bemalol ovqatlanishingiz mumkin bo'ladi!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+          <span>Savol: Operatsiyalar narxi qancha?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question">
+          Operatsiya narxi bemorning holatidan kelib chiqib belgilanadi! Ya'ni operatsiyamizning qanchalik og'ir va murakkab ekanligidan kelib chiqadi!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5 bg-light" aria-label="Manzil va qabulga yozilish formasi">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+
+      <!-- Map -->
+      <div class="col-lg-6">
+        <div class="h-100 rounded shadow overflow-hidden">
+          <iframe 
+            src="https://yandex.ru/map-widget/v1/-/CHdPzVpw" 
+            class="w-100 h-100 border-0" 
+            style="min-height: 350px;" 
+            allowfullscreen
+            loading="lazy"
+            title="Klinika manzili xaritasi">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="col-lg-6">
+        <div class="bg-white rounded shadow p-4 h-100 d-flex flex-column justify-content-center">
+          <h4 class="fw-bold mb-4">Qabulga yozilish</h4>
+          <form aria-label="Qabulga yozilish formasi" method="post" >
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="visually-hidden">Ismingiz</label>
+              <input id="name" type="text" class="form-control" placeholder="Ваше имя" minlength="3" name = "name" required aria-required="true" />
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="visually-hidden">Telefon raqam</label>
+              <input id="text" type="tel" class="form-control" placeholder="912 345-67-89" name = "number" required aria-required="true" />
+            </div>
+            <button type="submit" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill d-flex align-items-center justify-content-center gap-2" aria-label="Joy band qilish">
+              JOY BAND QILISH
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="consultation-section py-5" aria-label="Konsultatsiya bo‘limi">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-8">
+        <p class="consultation-text">
+          Sizda yoki tanishlaringizda yuqorida sanab o‘tilgan kasalliklar bilan bog‘liq muammolar bormi?<br>
+          Darhol konsultatsiyaga ro‘yxatdan o‘ting yordam berishga tayyormiz!
+        </p>
+      </div>
+      <div class="col-md-4 text-md-end text-center">
+        <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">
+          QABULGA YOZILISH <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white mb-3 "><img src="{% static './assets/images/logo-footer.png' %}" class="img-fluid" width="100" alt=""></h5>
+          <div class="d-flex gap-3">
+            <a href="https://www.instagram.com/dr_akmal_khakimov?igsh=Y2h4NmRlbmV5a29s"><i class="fab fa-instagram text-white fs-5"></i></a>
+            <a href="https://www.instagram.com/dr_abobakirov?igsh=MTYwZTNtdzVqOWtscQ=="><i class="fab fa-instagram text-white fs-5"></i></a>
+            <a href="https://youtube.com/@yuzjagjarrxoligiuzbekistan?si=yf1rRZoAG_fLxvOD"><i class="fab fa-youtube text-white fs-5"></i></a>
+          </div>
+          <p class="text-secondary mt-3">&copy; 2025 Yuz jag' jarrohligi</p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white mb-3">CONTACTS</h5>
+          <p class="text-white mb-1">
+            📍 Toshkent: Yashnobod tumani, Olimkent ko‘chasi, 32 uy
+          </p>
+          <p class="text-white mb-1">
+            📍 Andijon: Otabekov ko‘chasi, 4-B uy
+          </p>
+          <p class="text-white mb-1">
+            ☎️ Telefon: +998 90 529 53 34
+          </p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white mb-3">ISH VAQTI</h5>
+          <p class="text-white mb-1"><strong>Toshkent shahrida:</strong></p>
+          <p class="text-white mb-1">Dushanba–Chorshanba: 09:00 - 18:00</p>
+          <p class="text-white mb-1"><strong>Andijon shahrida:</strong></p>
+          <p class="text-white mb-1">Payshanba–Shanba: 09:00 - 18:00</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        
+        <!-- Modal Header -->
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="bookingModalLabel">Qabulga yozilish</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Ваше имя" required minlength="3" name="name">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="912 345-67-89" required name="number">
+            </div>
+            <button type="submit" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill w-100">
+              JOY BAND QILISH <i class="fa-solid fa-arrow-right ms-2"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+  <style>
+    .alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+  </style>
+  
+  
+      <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+</body>
+
+<!-- Bootstrap 5 JS Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<!-- Bootstrap 5 JS (body oxirida) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- count up js -->
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
+
+<script src="{% static './assets/js/main.js' %}" defer></script>
+  </html>
