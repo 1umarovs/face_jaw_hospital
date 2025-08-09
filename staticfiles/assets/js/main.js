@@ -66,7 +66,6 @@ document.querySelectorAll('.scroll-link').forEach(link => {
   });
 });
 
-// 🟡 Muammo bo'lgan joyni to'g'irladik
 const allThumbs = document.querySelectorAll('.video-thumb');
 let currentIframe = null;
 let currentThumb = null;
@@ -87,30 +86,17 @@ allThumbs.forEach(thumb => {
   img.className = 'img-fluid rounded';
   thumb.insertBefore(img, thumb.querySelector('.play-icon'));
 
-  // Save original HTML
+  // Saqlab qo'yish
   thumb.dataset.original = thumb.innerHTML;
 
+  // Video ochish
   thumb.addEventListener('click', (e) => {
-    e.stopPropagation(); // klikni yuqoriga tarqalmaydi, tashqariga bosish uchun
+    e.stopPropagation(); // boshqa click eventlarga ta’sir qilmasin
 
-    // Agar shu videoga yana bosilsa, videoni yopamiz (avatarga qaytadi)
-    if (currentThumb === thumb && currentIframe) {
-      thumb.innerHTML = thumb.dataset.original;
-      currentIframe = null;
-      currentThumb = null;
-      return;
-    }
+    closeCurrentVideo(); // avvalgi video yopiladi
 
-    // Agar boshqa video ochiq bo'lsa, uni yopamiz
-    if (currentIframe) {
-      currentThumb.innerHTML = currentThumb.dataset.original;
-      currentIframe = null;
-      currentThumb = null;
-    }
-
-    // Yangi video iframe yaratamiz va o‘ynatamiz
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
     iframe.allowFullscreen = true;
     iframe.style.width = '100%';
@@ -126,15 +112,28 @@ allThumbs.forEach(thumb => {
   });
 });
 
-// Tashqariga bosilganda video yopilishi uchun
-document.body.addEventListener('click', () => {
-  if (currentIframe) {
+// 🟡 Funksiya — avvalgi videoni yopish
+function closeCurrentVideo() {
+  if (currentIframe && currentThumb) {
     currentThumb.innerHTML = currentThumb.dataset.original;
     currentIframe = null;
     currentThumb = null;
   }
+}
+
+// 🟢 Ekrandagi boshqa joyga bosilsa video yopiladi
+document.addEventListener('click', (e) => {
+  if (currentIframe && !currentThumb.contains(e.target)) {
+    closeCurrentVideo();
+  }
 });
 
+// 🟢 Swiper slide o'zgarsa video yopiladi
+if (typeof videoSwiper !== 'undefined') {
+  videoSwiper.on('slideChange', () => {
+    closeCurrentVideo();
+  });
+}
 
    AOS.init({
       duration: 800,

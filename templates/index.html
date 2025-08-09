@@ -46,7 +46,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static './assets/css/responsive.css' %}">
-  <link rel="shortcut icon" href="{% static './assets/images/favicon.png' %}" type="image/x-icon">
+  <link rel="shortcut icon" href="{% static './assets/images/favicon.webp' %}" type="image/x-icon">
   <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
 </head>
 <body>
@@ -61,22 +61,32 @@
     <div class="container d-flex justify-content-between align-items-center">
       
       <!-- Logo -->
-      <a class="navbar-brand fw-bold text-white" href="#" aria-label="Bosh sahifa">
-        <img 
-          src="{% static './assets/images/logo.png' %}" 
-          alt="Yuz jag’ Jarrohligi logotipi" 
-          class="img-fluid d-none d-lg-block" 
-          style="max-width: 175px; height: auto;" 
-          loading="lazy"
-        >
-        <img 
-          src="{% static './assets/images/logo-sm.png' %}" 
-          alt="Yuz jag’ Jarrohligi kichik logotipi" 
-          class="img-fluid d-lg-none d-block" 
-          style="max-width: 175px; height: auto;" 
-          loading="lazy"
-        >
-      </a>
+          <a
+            class="navbar-brand fw-bold text-white"
+            href="#"
+            aria-label="Bosh sahifa"
+          >
+            <img
+              src="{% static './assets/images/logo.webp' %}"
+              alt="Yuz jag’ Jarrohligi logotipi"
+              class="img-fluid d-none d-lg-block"
+              style="max-width: 175px; height: auto"
+              loading="eager"
+              decoding="async"
+              width="175"
+              height="60"
+            />
+            <img
+              src="{% static './assets/images/logo-sm.webp' %}"
+              alt="Yuz jag’ Jarrohligi kichik logotipi"
+              class="img-fluid d-lg-none d-block"
+              style="max-width: 175px; height: auto"
+              loading="eager"
+              decoding="async"
+              width="175"
+              height="60"
+            />
+          </a>
 
       <!-- Desktop Nav -->
       <ul class="navbar-nav d-none d-lg-flex flex-row gap-4" role="menubar">
@@ -151,7 +161,12 @@
 >
   <div class="offcanvas-header">
     <h5 id="mobileMenuLabel" class="offcanvas-title fw-bold">
-      <img src="{% static './assets/images/logo-sm.png' %}" class="img-fluid" width="150" alt="Yuz jag’ Jarrohligi logotipi">
+          <img
+            src="{% static './assets/images/logo-sm.webp' %}"
+            class="img-fluid"
+            width="150"
+            alt="Yuz jag’ Jarrohligi logotipi"
+          />
     </h5>
     <button 
       type="button" 
@@ -385,7 +400,7 @@
 
       <!-- Shifokor 1: Rasm -->
       <div class="col-lg-6 d-flex" data-aos="fade-right">
-        <img src="{% static './assets/images/first-doctor.png' %}" alt="Davronbek Abobakirov" 
+        <img src="{% static './assets/images/first-doctor.jpg' %}" alt="Davronbek Abobakirov" 
              class="img-fluid rounded w-100" style="object-fit: cover;">
       </div>
 
@@ -419,7 +434,7 @@
 
       <!-- Shifokor 2: Rasm -->
       <div class="col-lg-6 d-flex" data-aos="fade-right">
-        <img src="{% static './assets/images/second-doctor.png' %}" alt="Akmal Hakimov" 
+        <img src="{% static './assets/images/second-doctor.jpg' %}" alt="Akmal Hakimov" 
              class="img-fluid rounded w-100" style="object-fit: cover;">
       </div>
 
@@ -704,7 +719,14 @@
     <div class="container py-4">
       <div class="row">
         <div class="col-md-4 mb-3">
-          <h5 class="text-white mb-3 "><img src="{% static './assets/images/logo-footer.png' %}" class="img-fluid" width="100" alt=""></h5>
+          <h5 class="text-white mb-3 ">
+            <img
+                src="{% static './assets/images/logo-footer.webp' %}"
+                class="img-fluid"
+                width="100"
+                alt=""
+              />
+            </h5>
           <div class="d-flex gap-3">
             <a href="https://www.instagram.com/dr_akmal_khakimov?igsh=Y2h4NmRlbmV5a29s"><i class="fab fa-instagram text-white fs-5"></i></a>
             <a href="https://www.instagram.com/dr_abobakirov?igsh=MTYwZTNtdzVqOWtscQ=="><i class="fab fa-instagram text-white fs-5"></i></a>
