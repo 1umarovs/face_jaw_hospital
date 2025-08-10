@@ -1,7 +1,10 @@
-from .main_model import ContactUs , Patients
+from .main_model import ContactUs , Patients , OperationsImages , Operations ,Category
 
 
 __all__ = [
     'ContactUs',
-    'Patients'
+    'Patients',
+    'OperationsImages',
+    'Operations',
+    'Category'
 ]

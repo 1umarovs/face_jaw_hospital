@@ -3,9 +3,9 @@ import re
 import requests
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib import messages  # 🔹 messages moduli qo‘shildi
+from django.contrib import messages  
 from dotenv import load_dotenv
-from main.models import ContactUs, Patients
+from main.models import ContactUs, Patients , Category
 
 # .env fayldan token va chat_id ni yuklash
 load_dotenv()
@@ -33,7 +33,12 @@ def send_telegram_message(bot_token, chat_id, message):
 class homePage(View):
     def get(self, request):
         patients = Patients.objects.all()
-        return render(request, 'index.html', {'patients': patients})
+        categories = Category.objects.all()
+        context = {
+            'patients': patients,
+            'categories': categories
+        }
+        return render(request, 'index.html', context)
 
     def post(self, request):
         name = request.POST.get('name')
@@ -67,3 +72,7 @@ class homePage(View):
 
         messages.success(request, "Muvaffaqiyatli yuborildi!")
         return redirect('main:home')
+
+
+
+class CategoryDetail()

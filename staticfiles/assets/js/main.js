@@ -49,7 +49,7 @@ document.querySelectorAll(".faq-question").forEach(button => {
 });
 
 
-document.querySelectorAll('.scroll-link').forEach(link => {
+document.querySelectorAll('a.scroll-link').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
     const targetId = this.getAttribute('data-target');
@@ -57,7 +57,6 @@ document.querySelectorAll('.scroll-link').forEach(link => {
     if (targetEl) {
       targetEl.scrollIntoView({ behavior: 'smooth' });
     }
-
     const offcanvasEl = document.querySelector('.offcanvas.show');
     if (offcanvasEl) {
       const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
@@ -65,6 +64,8 @@ document.querySelectorAll('.scroll-link').forEach(link => {
     }
   });
 });
+
+
 
 const allThumbs = document.querySelectorAll('.video-thumb');
 let currentIframe = null;

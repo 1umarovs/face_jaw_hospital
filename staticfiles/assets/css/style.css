@@ -51,6 +51,10 @@
 }
 
 
+.dropdown-item.active {
+  font-weight: 700;
+  color: #ffc107; /* Bootstrap warning rangiga yaqin */
+}
 
 .section-title {
   font-size: var(--section-title-lg);
