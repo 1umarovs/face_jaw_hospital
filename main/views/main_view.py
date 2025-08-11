@@ -85,11 +85,11 @@ class homePage(View):
 
 
 def categoryDetail(request, slug):
-    # OperationImages'ni oldindan olish
+
     operations_qs = Operations.objects.prefetch_related('operation_images')
     first_image = None
     
-    # Category'ni olish
+
     category = get_object_or_404(
         Category.objects.prefetch_related(
             Prefetch('operations', queryset=operations_qs)
@@ -102,11 +102,10 @@ def categoryDetail(request, slug):
         'operations': category.operations.all(),
     }
 
-    # 🔹 GET request bo‘lsa, faqat sahifani render qilamiz
     if request.method == 'GET':
         return render(request, 'category_detail.html', context)
 
-    # 🔹 POST bo‘lsa, formani tekshiramiz
+
     name = request.POST.get('name')
     number = request.POST.get('number')
 
