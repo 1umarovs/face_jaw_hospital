@@ -233,32 +233,25 @@
 
 
   <!-- HERO SECTION -->
-<section class="position-relative min-vh-100 overflow-hidden" aria-label="Yuz sohasi kasalliklari haqida umumiy ma'lumot">
-
-  <!-- Surgeons image: loading="eager" bilan tez yuklash, width va height qo'shildi -->
-  <img 
-    src="{% static './assets/images/surgeons.png' %}"  
-    alt="Surgeons jamoasi rasmi" 
-    class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" 
-    loading="eager"
-    width="1920" height="1080"  
-    decoding="async" 
-  />
-
-  <!-- Overlay -->
-  <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50" aria-hidden="true"></div>
-
-
-
-
-  <!-- Text -->
-  <div class="container position-relative z-2 d-flex flex-column justify-content-center align-items-start min-vh-100 text-white" data-aos="fade-up">
-    
-
-    <h1 class="section-title fw-bold mb-4">{{ t.hero_title }}</h1>
-    <p class="description mb-4 col-lg-6">{{ t.hero_desp }}</p>
-    <a href="#" class="btn btn-warning fw-semibold px-4 py-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Konsultatsiya olish">{{ t.consultation }} <i class="fa-solid fa-arrow-right ms-2"></i></a>
-  </div>
+<section class="hero position-relative">
+    <div class="hero-left">
+        <div class="container position-absolute translate-middles" >
+            <h1 class="section-title">{{ t.hero_title }}</h1>
+            <p class="description">{{ t.hero_desp }}</p>
+            <a href="#" 
+               class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" 
+               data-bs-toggle="modal" 
+               data-bs-target="#bookingModal" 
+               role="button" 
+               aria-label="Qabulga yozilish">
+               {{ t.acceptance }} 
+               <i class="fa-solid fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+    <div class="hero-right">
+        <img src="{% static 'assets/images/surgeon.png' %}" alt="Shifokorlar">
+    </div>
 </section>
 
 <section class="py-5 my-5 registration" aria-labelledby="registration-title">
@@ -358,7 +351,7 @@
   </div>
 </section>
 
-<section class="why-us py-5 my-5 bg-light" aria-labelledby="whyus-title">
+<section class="why-us my-5 bg-light" aria-labelledby="whyus-title">
   <div class="container">
     <div class="row align-items-center text-center">
 
@@ -389,7 +382,7 @@
       <!-- Shifokor 1: Rasm -->
       <div class="col-lg-6 d-flex" data-aos="fade-right">
         <img src="{% static './assets/images/first-doctor.jpg' %}" alt="Davronbek Abobakirov" 
-             class="img-fluid rounded w-100" style="object-fit: cover;">
+             class="img-fluid rounded w-100 " style="object-fit: cover;aspect-ratio: 5/6;"/>
       </div>
 
       <!-- Shifokor 1: Ma'lumot -->
@@ -423,7 +416,7 @@
       <!-- Shifokor 2: Rasm -->
       <div class="col-lg-6 d-flex" data-aos="fade-right">
         <img src="{% static './assets/images/second-doctor.jpg' %}" alt="Akmal Hakimov" 
-             class="img-fluid rounded w-100" style="object-fit: cover;">
+             class="img-fluid rounded w-100 " style="object-fit: cover;aspect-ratio: 4/5;"/>
       </div>
 
       <!-- Shifokor 2: Ma'lumot -->
@@ -463,13 +456,10 @@
           <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 1" class="cert-img swiper-image img-fluid" loading="lazy" />
         </div>
         <div class="swiper-slide">
-          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 2" class="cert-img swiper-image img-fluid" loading="lazy" />
+          <img src="{% static './assets/images/certificate1.jpg' %}" alt="Sertifikat 2" class="cert-img swiper-image img-fluid" loading="lazy" />
         </div>
         <div class="swiper-slide">
-          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 3" class="cert-img swiper-image img-fluid" loading="lazy" />
-        </div>
-        <div class="swiper-slide">
-          <img src="{% static './assets/images/certificate.jpg' %}" alt="Sertifikat 4" class="cert-img swiper-image img-fluid" loading="lazy" />
+          <img src="{% static './assets/images/certificate2.jpg' %}" alt="Sertifikat 3" class="cert-img swiper-image img-fluid" loading="lazy" />
         </div>
         <!-- Repeat sertifikatlar kerak bo'lsa shu yerga qo'shilsin -->
       </div>
@@ -619,7 +609,7 @@
       <div class="col-lg-6">
         <div class="h-100 rounded shadow overflow-hidden">
           <iframe 
-            src="https://yandex.ru/map-widget/v1/-/CHdPzVpw" 
+             src="https://yandex.ru/map-widget/v1/-/CHhwrP6X"
             class="w-100 h-100 border-0" 
             style="min-height: 350px;" 
             allowfullscreen
