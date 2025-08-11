@@ -5,7 +5,7 @@ from .models import   Operations , Category
 
 @register(Operations)
 class OperationsTranslationOptions(TranslationOptions):
-    fields = ('name', 'description', 'date', 'patient')
+    fields = ('name',)
 
 
 @register(Category)

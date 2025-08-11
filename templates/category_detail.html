@@ -1,0 +1,412 @@
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+
+
+<header class=" w-100 z-3" role="banner">
+  <nav class="navbar navbar-expand-lg" role="navigation" aria-label="Asosiy navigatsiya">
+    <div class="container d-flex justify-content-between align-items-center">
+      
+      <!-- Logo -->
+          <a
+            class="navbar-brand fw-bold text-white"
+            href="{% url 'main:home' %}"
+            aria-label="Bosh sahifa"
+          >
+            <img
+              src="{% static './assets/images/logo.webp' %}"
+              alt="Yuz jag’ Jarrohligi logotipi"
+              class="img-fluid d-block"
+              style="max-width: 175px; height: auto"
+              loading="eager"
+              decoding="async"
+              width="175"
+              height="60"
+            />
+          </a>
+
+      <!-- Desktop Nav -->
+      <ul class="navbar-nav d-none d-lg-flex flex-row gap-4" role="menubar">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'main:home' %}">{{ t.doctors }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'main:home' %}">{{ t.results }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'main:home' %}">{{ t.patients }}</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- Language Dropdown -->
+      {% get_current_language as LANGUAGE_CODE %}
+      <div class="dropdown d-none d-lg-block">
+        <a 
+          class="text-white dropdown-toggle text-decoration-none small" 
+          href="#" 
+          role="button" 
+          id="languageDropdown" 
+          data-bs-toggle="dropdown" 
+          aria-expanded="false" 
+          aria-haspopup="true"
+        >
+          {% if LANGUAGE_CODE == 'uz' %}
+            UZB
+          {% else %}
+            RUS
+          {% endif %}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
+          <li>
+            <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.path }}">
+              <input type="hidden" name="language" value="uz">
+              <button type="submit" 
+                      class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
+                      role="menuitem">
+                UZB
+              </button>
+            </form>
+          </li>
+          <li>
+            <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.path }}">
+              <input type="hidden" name="language" value="ru">
+              <button type="submit" 
+                      class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
+                      role="menuitem">
+                RUS
+              </button>
+            </form>
+          </li>
+        </ul>
+      </div>
+
+        <!-- Consultation Button -->
+        <a 
+          href="#" 
+          class="btn btn-warning fw-semibold px-3 py-2 rounded-pill d-none d-lg-inline-block" 
+          data-bs-toggle="modal" 
+          data-bs-target="#bookingModal" 
+          role="button"
+        >
+          {{ t.consultation }} <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button 
+          class="navbar-toggler border-0 d-lg-none" 
+          type="button" 
+          data-bs-toggle="offcanvas" 
+          data-bs-target="#mobileMenu" 
+          aria-controls="mobileMenu" 
+          aria-label="Mobil menyuni ochish"
+        >
+          <i class="fa-solid fa-bars text-dark"></i>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Offcanvas Mobile Menu -->
+<div 
+  class="offcanvas offcanvas-start text-white" 
+  tabindex="-1" 
+  id="mobileMenu" 
+  aria-labelledby="mobileMenuLabel" 
+  style="background-color: #5475FD;"
+>
+  <div class="offcanvas-header">
+    <h5 id="mobileMenuLabel" class="offcanvas-title fw-bold">
+          <img
+            src="{% static './assets/images/logo-sm.webp' %}"
+            class="img-fluid"
+            width="150"
+            alt="Yuz jag’ Jarrohligi logotipi"
+          />
+    </h5>
+    <button 
+      type="button" 
+      class="btn-close btn-close-white" 
+      data-bs-dismiss="offcanvas" 
+      aria-label="Yopish"
+      aria-controls="mobileMenu"
+    ></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column justify-content-between">
+
+    <nav>
+      <ul class="navbar-nav mb-4" role="menu">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'main:home' %}">{{ t.doctors }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'main:home' %}">{{ t.results }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'main:home' %}">{{ t.patients }}</a>
+        </li>
+      </ul>
+    </nav>
+
+<div class="dropdown">
+  <a 
+    class="text-white dropdown-toggle text-decoration-none small" 
+    href="#" 
+    role="button" 
+    id="languageDropdown" 
+    data-bs-toggle="dropdown" 
+    aria-expanded="false" 
+    aria-haspopup="true"
+  >
+    {% if LANGUAGE_CODE == 'uz' %}
+      UZB
+    {% else %}
+      RUS
+    {% endif %}
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
+    <li>
+      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="uz">
+        <button type="submit" 
+                class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
+                role="menuitem">
+          UZB
+        </button>
+      </form>
+    </li>
+    <li>
+      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="ru">
+        <button type="submit" 
+                class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
+                role="menuitem">
+          RUS
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+    <address class="small mb-0">
+      <p class="fw-semibold mb-1">{{ t.address }}</p>
+      <p class="mb-0">{{t.andijan_address}}</p>
+      <p class="mb-0">{{t.tashkent_address}}</p>
+      <p class="mb-0">☎️ +998 90 529 53 34</p>
+    </address>
+
+    <div class="d-flex gap-3 mt-4" aria-label="Ijtimoiy tarmoqlar">
+      <a href="https://www.instagram.com/dr_abobakirov" class="text-white fs-5" aria-label="Instagram - dr_abobakirov"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.instagram.com/dr_akmal_khakimov" class="text-white fs-5" aria-label="Instagram - dr_akmal_khakimov"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+
+  </div>
+</div>
+
+
+
+<section class="category-detail-intro py-5 my-5 text-center">
+  <div class="container">
+    <h2 class="section-title py-2">{{ category.name }}</h2>
+    <p class="description text-dark py-2">{{ category.description }}</p>
+    <h3 class="operations-title">{{ t.stats_successfuly_operations }}</h3>
+  </div>
+</section>
+
+<section class="operations bg-light py-5">
+  <div class="container">
+    <div class="row">
+      {% for operation in operations %}
+      <article
+        class="col-lg-3 col-md-6 col-12"
+        role="region"
+        aria-label="{{ operation.name }}">
+          <div
+            role="button"
+            class="card h-100 shadow-sm border-0 operation-card"
+            data-title="{{ operation.name }}"
+            data-images='[
+              {% if operation.operation_images.count > 0 %}
+                {% for img in operation.operation_images.all %}
+                  "{{ img.image.url }}"{% if not forloop.last %},{% endif %}
+                {% endfor %}
+              {% else %}
+                "{{ operation.img.url }}"
+              {% endif %}
+            ]'
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+          >
+
+
+          <img
+            src="{{ operation.img.url }}"
+            class="card-img-top first-image"
+            alt="{{ operation.name }} rasmi"
+            loading="lazy"
+          />
+          <div class="card-body">
+            <h5 class="descriptionitle mb-2 py-2">{{ operation.name }}</h5>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+<section class="consultation-section py-5" aria-label="Konsultatsiya bo‘limi">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-8">
+        <p class="consultation-text">
+          {{ t.consultation_desp }}
+        </p>
+      </div>
+      <div class="col-md-4 text-md-end text-center">
+        <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">
+          {{ t.acceptance }} <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Fullscreen Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-white text-dark">
+      <div class="container">
+        <div class="modal-header border-0">
+          <button
+            type="button"
+            class="btn-close my-3"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4 align-items-center">
+            <!-- Chap taraf: Slider -->
+            <div class="col-md-6">
+              <!-- Main Swiper -->
+              <div class="swiper mainSwiper mb-3">
+                <div class="swiper-wrapper"></div>
+
+                <!-- Custom arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+
+              <!-- Thumbnail Swiper -->
+              <div class="swiper thumbSwiper">
+                <div class="swiper-wrapper"></div>
+              </div>
+            </div>
+
+            <!-- O'ng taraf: Title + Button -->
+            <div class="col-md-6 align-items-start">
+              <h2 id="imageTitle" class="fw-bold mb-4"></h2>
+              <a href="#" class="btn btn-warning fw-semibold px-4 py-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Konsultatsiya olish">{{ t.consultation }} <i class="fa-solid fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+    .first-image {
+      object-fit: cover;
+      width: 100%;
+      aspect-ratio: 4/3;
+    }
+    /* Thumbnail active border */
+    .thumbSwiper .swiper-slide-thumb-active img {
+      border: 2px solid #000;
+    }
+
+    /* Arrows style */
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      color: #fff;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let thumbSwiper = new Swiper(".thumbSwiper", {
+        spaceBetween: 10,
+        slidesPerView: 6,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+
+      let mainSwiper = new Swiper(".mainSwiper", {
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          swiper: thumbSwiper,
+        },
+      });
+
+      // Modal ochilganda ma'lumotlarni yuklash
+      document.querySelectorAll(".operation-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          let title = this.dataset.title;
+          let images = JSON.parse(this.dataset.images);
+
+          document.getElementById("imageTitle").textContent = title;
+
+          let mainWrapper = document.querySelector(
+            ".mainSwiper .swiper-wrapper"
+          );
+          let thumbWrapper = document.querySelector(
+            ".thumbSwiper .swiper-wrapper"
+          );
+          mainWrapper.innerHTML = "";
+          thumbWrapper.innerHTML = "";
+
+          images.forEach((src) => {
+            mainWrapper.innerHTML += `<div class="swiper-slide"><img src="${src}" style="object-fit: cover; width: 100%; aspect-ratio: 4/3;" class="img-fluid rounded"></div>`;
+            thumbWrapper.innerHTML += `<div class="swiper-slide" style="cursor:pointer;"><img src="${src}" class="img-fluid rounded"></div>`;
+          });
+
+          mainSwiper.update();
+          thumbSwiper.update();
+        });
+      });
+    });
+  </script>
+
+  {% endblock %}
+</div>

@@ -53,8 +53,8 @@ class Category(models.Model):
 
 class Operations(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to='operation_image/', blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE , related_name='operations')
 
     def __str__(self):
         return self.name
@@ -69,7 +69,7 @@ class Operations(models.Model):
 
 
 class OperationsImages(models.Model):
-    operation = models.ForeignKey(Operations, on_delete=models.CASCADE)
+    operation = models.ForeignKey(Operations, on_delete=models.CASCADE, related_name='operation_images')
     image = models.ImageField(upload_to='operation_images/')
 
     def __str__(self):

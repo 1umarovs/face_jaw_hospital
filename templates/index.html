@@ -1,61 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>{% trans "Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik" %}</title>
-
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik">
-  <meta name="description" content="Yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar. Individual yondashuv, sifatli va xavfsiz jarrohlik xizmatlari.">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-
-  <meta property="og:title" content="Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik">
-  <meta property="og:description" content="Yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar. Individual yondashuv, sifatli va xavfsiz jarrohlik xizmatlari.">
-  <meta property="og:image" content="https://sizningsaytingiz.uz/assets/images/og-image.jpg">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Yuz jag’ Jarrohligi — Mutaxassislar jamoasi, xavfsiz va samarali jarrohlik">
-  <meta property="twitter:description" content="Yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar. Individual yondashuv, sifatli va xavfsiz jarrohlik xizmatlari.">
-  <meta property="twitter:image" content="https://sizningsaytingiz.uz/assets/images/og-image.jpg">
-
-  <!-- Additional SEO Meta Tags -->
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Sizning Ismingiz yoki Klinikangiz nomi">
-  <meta name="keywords" content="yuz jarrohligi, yuz jarrohi, plastik jarrohlik, estetika, xavfsiz jarrohlik, tibbiyot, klinika, bemorlar uchun">
 
 
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
-
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"></noscript>
-
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet"></noscript>
-
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"></noscript>
-
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{% static './assets/css/responsive.css' %}">
-  <link rel="shortcut icon" href="{% static './assets/images/favicon.webp' %}" type="image/x-icon">
-  <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
-</head>
-<body>
-
-
-    <!-- content here -->
-
-
+{% block content %}
 <!-- HEADER -->
 <header class="position-absolute w-100 z-3" role="banner">
   <nav class="navbar navbar-expand-lg" role="navigation" aria-label="Asosiy navigatsiya">
@@ -92,13 +40,13 @@
       <!-- Desktop Nav -->
       <ul class="navbar-nav d-none d-lg-flex flex-row gap-4" role="menubar">
         <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#" role="menuitem" tabindex="0">{% trans "SHIFOKORLAR" %}</a>
+          <a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#" role="menuitem" tabindex="0">{{ t.doctors }}</a>
         </li>
         <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="natijalar" href="#" role="menuitem" tabindex="0">{% trans "NATIJALAR" %}</a>
+          <a class="nav-link text-white scroll-link" data-target="natijalar" href="#" role="menuitem" tabindex="0">{{ t.results }}</a>
         </li>
         <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="bemorlar" href="#" role="menuitem" tabindex="0">{% trans "BEMORLAR FIKRLARI" %}</a>
+          <a class="nav-link text-white scroll-link" data-target="bemorlar" href="#" role="menuitem" tabindex="0">{{ t.patients }}</a>
         </li>
       </ul>
 
@@ -106,44 +54,49 @@
 
         <!-- Language Dropdown -->
       {% get_current_language as LANGUAGE_CODE %}
-      <div class="dropdown d-none d-lg-flex">
-        <a 
-          class="text-white dropdown-toggle text-decoration-none small" 
-          href="#" 
-          role="button" 
-          id="languageDropdown" 
-          data-bs-toggle="dropdown" 
-          aria-expanded="false" 
-          aria-haspopup="true"
-        >
-          {% if LANGUAGE_CODE == 'uz' %}
-             UZB
-          {% else %}
-             RUS
-          {% endif %}
-          
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
-          <li>
-            <a 
-              class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
-              href="/uz/" 
-              role="menuitem"
-            >
-              UZB
-            </a>
-          </li>
-          <li>
-            <a 
-              class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
-              href="/ru/" 
-              role="menuitem"
-            >
-              RUS
-            </a>
-          </li>
-        </ul>
-      </div>
+<div class="dropdown d-none d-lg-block">
+  <a 
+    class="text-white dropdown-toggle text-decoration-none small" 
+    href="#" 
+    role="button" 
+    id="languageDropdown" 
+    data-bs-toggle="dropdown" 
+    aria-expanded="false" 
+    aria-haspopup="true"
+  >
+    {% if LANGUAGE_CODE == 'uz' %}
+      UZB
+    {% else %}
+      RUS
+    {% endif %}
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
+    <li>
+      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="uz">
+        <button type="submit" 
+                class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
+                role="menuitem">
+          UZB
+        </button>
+      </form>
+    </li>
+    <li>
+      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="ru">
+        <button type="submit" 
+                class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
+                role="menuitem">
+          RUS
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
 
         <!-- Consultation Button -->
         <a 
@@ -153,7 +106,7 @@
           data-bs-target="#bookingModal" 
           role="button"
         >
-          {% trans "KONSULTATSIYA OLISH" %} <i class="fa-solid fa-arrow-right ms-2"></i>
+          {{ t.consultation }} <i class="fa-solid fa-arrow-right ms-2"></i>
         </a>
 
         <!-- Mobile hamburger -->
@@ -202,61 +155,66 @@
     <nav>
       <ul class="navbar-nav mb-4" role="menu">
         <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#" role="menuitem" tabindex="0">{% trans "SHIFOKORLAR" %}</a>
+          <a class="nav-link text-white scroll-link" data-target="doctors" href="#" role="menuitem" tabindex="0">{{ t.doctors }}</a>
         </li>
         <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="natijalar" href="#" role="menuitem" tabindex="0">{% trans "NATIJALAR" %}</a>
+          <a class="nav-link text-white scroll-link" data-target="results" href="#" role="menuitem" tabindex="0">{{ t.results }}</a>
         </li>
         <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="bemorlar" href="#" role="menuitem" tabindex="0">{% trans "BEMORLAR FIKRLARI" %}</a>
+          <a class="nav-link text-white scroll-link" data-target="patients" href="#" role="menuitem" tabindex="0">{{ t.patients }}</a>
         </li>
       </ul>
     </nav>
 
 <div class="dropdown mb-4">
-        <a 
-          class="text-white dropdown-toggle text-decoration-none small" 
-          href="#" 
-          role="button" 
-          id="languageDropdown" 
-          data-bs-toggle="dropdown" 
-          aria-expanded="false" 
-          aria-haspopup="true"
-        >
-          {% if LANGUAGE_CODE == 'uz' %}
-            UZB
-          {% else %}
-            RUS
-          {% endif %}
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
-          <li>
-            <a 
-              class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
-              href="/uz/" 
-              role="menuitem"
-            >
-              UZB
-            </a>
-          </li>
-          <li>
-            <a 
-              class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
-              href="/ru/" 
-              role="menuitem"
-            >
-              RUS
-            </a>
-          </li>
-        </ul>
-      </div>
-
+  <a 
+    class="text-white dropdown-toggle text-decoration-none small" 
+    href="#" 
+    role="button" 
+    id="languageDropdown" 
+    data-bs-toggle="dropdown" 
+    aria-expanded="false" 
+    aria-haspopup="true"
+  >
+    {% if LANGUAGE_CODE == 'uz' %}
+      UZB
+    {% else %}
+      RUS
+    {% endif %}
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
+    <li>
+      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="uz">
+        <button type="submit" 
+                class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
+                role="menuitem">
+          UZB
+        </button>
+      </form>
+    </li>
+    <li>
+      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="ru">
+        <button type="submit" 
+                class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
+                role="menuitem">
+          RUS
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
 
     <address class="small mb-0">
-      <p class="fw-semibold mb-1">{% trans "MANZIL" %}</p>
-      <p class="mb-0">{% trans "📍 Toshkent shahri, Yashnobod tumani, Olimkent ko‘chasi, 32 uy" %}</p>
-      <p class="mb-0">{% trans "📍 Andijon shahri, Otabekov ko'chasi, 4-B uy" %}</p>
-      <p class="mb-0">{% trans "☎️ +998 90 529 53 34" %}</p>
+      <p class="fw-semibold mb-1">{{ t.address }}</p>
+      <p class="mb-0">{{ t.tashkent_address }}</p>
+      <p class="mb-0">{{ t.andijan_address }}</p>
+      <p class="mb-0">☎️ +998 90 529 53 34</p>
     </address>
 
     <div class="d-flex gap-3 mt-4" aria-label="Ijtimoiy tarmoqlar">
@@ -270,16 +228,7 @@
   <!-- start main -->
 
 
-    <div id="messages-container" class="position-fixed top-0 start-50 translate-middle-x mt-5 py-5" style="z-index: 1055; width: 400px; max-width: 90vw;">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show py-3" role="alert">
-          {{ message }}
-          <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      {% endfor %}
-    {% endif %}
-  </div>
+
   <main>
 
 
@@ -292,7 +241,7 @@
     alt="Surgeons jamoasi rasmi" 
     class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" 
     loading="eager"
-    width="1920" height="1080"  <
+    width="1920" height="1080"  
     decoding="async" 
   />
 
@@ -306,9 +255,9 @@
   <div class="container position-relative z-2 d-flex flex-column justify-content-center align-items-start min-vh-100 text-white" data-aos="fade-up">
     
 
-    <h1 class="section-title fw-bold mb-4">{% trans "Yuz sohasi kasalliklarining zamonaviy yechimi" %}</h1>
-    <p class="description mb-4 col-lg-6">{% trans "Tajribali jarrohlar jamoasi bilan yuzingizni tabiiy holatiga qaytaring: estetik ko‘rinish, og‘riqsiz holat, mukammal simmetriya." %}</p>
-    <a href="#" class="btn btn-warning fw-semibold px-4 py-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Konsultatsiya olish">{% trans "KONSULTATSIYA OLISH" %} <i class="fa-solid fa-arrow-right ms-2"></i></a>
+    <h1 class="section-title fw-bold mb-4">{{ t.hero_title }}</h1>
+    <p class="description mb-4 col-lg-6">{{ t.hero_desp }}</p>
+    <a href="#" class="btn btn-warning fw-semibold px-4 py-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Konsultatsiya olish">{{ t.consultation }} <i class="fa-solid fa-arrow-right ms-2"></i></a>
   </div>
 </section>
 
@@ -317,12 +266,11 @@
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-down">
         <div class="register-info px-3">
-          <h2 id="registration-title" class="fw-bold py-3 title">{% trans "Xalqaro tajriba" %}</h2>
+          <h2 id="registration-title" class="fw-bold py-3 title">{{ t.international_experience }}</h2>
           <p class="text-muted description my-3 mb-4">
-            {% trans "Biz yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar jamoasi sifatida,
-            har bir bemor uchun individual va puxta rejalashtirilgan jarrohlik protseduralarini taqdim etamiz." %}
+            {{ t.experience_description }}
           </p>
-          <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">{% trans "QABULGA YOZILISH" %} <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">{{ t.acceptance }} <i class="fa-solid fa-arrow-right ms-2"></i></a>
         </div>
       </div>
 
@@ -352,7 +300,7 @@
             <span class="counter" data-target="3500" aria-live="polite" aria-atomic="true">0</span>+
           </h3>
           <hr aria-hidden="true">
-          <p class="description text-muted">{% trans "Muvaffaqiyatli amalga oshirilgan operatsiyalar" %}</p>
+          <p class="description text-muted">{{t.stats_successfuly_operations}}</p>
         </div>
       </div>
 
@@ -362,7 +310,7 @@
             <span class="counter" data-target="2000" aria-live="polite" aria-atomic="true">0</span>+
           </h3>
           <hr aria-hidden="true">
-          <p class="description text-muted">{% trans "Yuz suyaklari singanda operatsiyalar" %}</p>
+          <p class="description text-muted">{{t.stats_face_bone_operations}}</p>
         </div>
       </div>
 
@@ -372,7 +320,7 @@
             <span class="counter" data-target="100" aria-live="polite" aria-atomic="true">0</span>+
           </h3>
           <hr aria-hidden="true">
-          <p class="description text-muted">{% trans "Ortognaik operatsiyalar" %}</p>
+          <p class="description text-muted">{{t.stats_orthognathic_operations}}</p>
         </div>
       </div>
 
@@ -382,7 +330,7 @@
             <span class="counter" data-target="1000" aria-live="polite" aria-atomic="true">0</span>+
           </h3>
           <hr aria-hidden="true">
-          <p class="description text-muted">{% trans "Yuz sohasi ankologiyasi" %}</p>
+          <p class="description text-muted">{{t.stats_oncological_operations}}</p>
         </div>
       </div>
 
@@ -392,7 +340,7 @@
             <span class="counter" data-target="200" aria-live="polite" aria-atomic="true">0</span>+
           </h3>
           <hr aria-hidden="true">
-          <p class="description text-muted">{% trans "Ankilozda artroplastika" %}</p>
+          <p class="description text-muted">{{t.stats_ankylosis_arthroplasty}}</p>
         </div>
       </div>
 
@@ -402,7 +350,7 @@
             <span class="counter" data-target="200" aria-live="polite" aria-atomic="true">0</span>+
           </h3>
           <hr aria-hidden="true">
-          <p class="description text-muted">{% trans "Yuz sohasi qayta tiklov operatsiyasi" %}</p>
+          <p class="description text-muted">{{t.stats_face_reconstruction_operations}}</p>
         </div>
       </div>
 
@@ -419,13 +367,10 @@
       </div>
 
       <div class="col-12 col-md-4" data-aos="zoom-in">
-        <h2 id="whyus-title" class="fw-bold mb-3">{% trans "Nima uchun biz ?" %}</h2>
-        <p class="fw-semibold">{% trans "Sizning sog‘lig‘ingiz va xavfsizligingiz — bizning birinchi ustuvorligimiz!" %}</p>
+        <h2 id="whyus-title" class="fw-bold mb-3">{{t.why_us}}</h2>
+        <p class="fw-semibold">{{t.your_health_and_safety}}</p>
         <p class="text-muted">
-          {% trans "Biz yuz jag‘ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar jamoasi sifatida,
-          har bir bemor uchun individual va puxta rejalashtirilgan jarrohlik protseduralarini taqdim etamiz.
-          Operatsiyadan oldin barcha jarayonlar aniq va shaffof rejalashtiriladi, shunda siz hech qanday
-          noaniqlik yoki qo‘rquv his qilmasligingizga ishonch hosil qilasiz." %}
+          {{t.why_us_desp}}
         </p>
       </div>
 
@@ -452,20 +397,20 @@
         <div class="bg-light p-4 rounded w-100 d-flex flex-column justify-content-between">
           <div>
             <h4 class="fw-bold mb-1" data-aos="fade-up">Davronbek Abobakirov</h4>
-            <p class="text-muted mb-3" data-aos="fade-up">{% trans "Professional yuz jag' jarrohi" %}</p>
+            <p class="text-muted mb-3" data-aos="fade-up">{{t.doctor_type}}</p>
             <hr class="w-25 border-dark opacity-100 mb-3"/>
             <p class="py-3" data-aos="fade-up">
-             {% trans "15 yildan ortiq tajribaga ega yuz jag‘ jarrohi. Yuz suyaklari siniq­larini davolash, yuz va jag‘ sohasidagi o‘smalarni olib tashlash, hamda ortognatik jarrohlik bo‘yicha mutaxassis." %}
+             {{t.experience_description}}
             </p>
             <p class="py-3" data-aos="fade-up">
-              <strong>“OrtogOnBlender”</strong> {% trans "3D rejalashtirish platformasi bo‘yicha yetuk mutaxassis, MDHdagi rasmiy vakillardan biri" %}
+              <strong>“OrtogOnBlender”</strong> {{t.ortogonblender_description}}
             </p>
             <p class="py-3" data-aos="fade-up">
-              <strong>{% trans "Malaka oshirish va xalqaro tajriba:" %}</strong><br>
-              {% trans "Yuz jag’ jarrohligi sohasida magistrlik diplomiga ega" %}<br>
-              {% trans "Itali­yadagi “OrgnaticaRoma” ortognatik jarrohlik jamoasi bilan hamkorlikda amaliy tajriba" %}<br>
-              {% trans "Janubiy Koreyada “Ortognatik operatsiyalarga virtual tayyorgarlik” seminari" %}<br>
-              {% trans "Hindiston, “ARTEMIS” klinikasida “Minimally invasive maxillofacial surgery” bo‘yicha amaliyot" %}
+              <strong>{{t.upgrade_and_international_experience}}</strong><br>
+              {{t.master_degree_in_jaw_surgery}}<br>
+              {{t.practical_experience_with_ortognatica_roma}}<br>
+              {{t.virtual_training_seminar_in_south_korea}}<br>
+              {{t.internship_at_artemis_clinic_in_india}}<br>
             </p>
           </div>
           <div class="mt-4">
@@ -486,16 +431,15 @@
         <div class="bg-light p-4 rounded w-100 d-flex flex-column justify-content-between">
           <div>
             <h4 class="fw-bold mb-1" data-aos="fade-up">Akmal Hakimov</h4>
-            <p class="text-muted mb-3" data-aos="fade-up">{% trans "Professional yuz jag' jarrohi" %}</p>
+            <p class="text-muted mb-3" data-aos="fade-up">{{t.doctor_type}}</p>
             <hr class="w-25 border-dark opacity-100 mb-3"/>
             <p class="py-3" data-aos="fade-up">
-             {% trans "15 yildan oshiq tajribaga ega yuz jag' jarroxi, zamonaviy yondashuv va yuzlab bemorlarning sog‘lig‘ini tiklashga hissa qo‘shgan mutaxassis. Dr. Akmal Hakimov yuz jag‘ sohasidagi jarrohlik bo‘yicha O‘zbekistonda yetakchi mutaxassislardan biridir." %}
+             {{t.experience_description2}}
             </p>
             <p class="py-3" data-aos="fade-up">
-              <strong>{% trans "Malaka oshirish va xalqaro tajriba:" %}</strong><br>
-              {% trans "Yuz jag' jarroxligi sohasida magistrlik diplomiga ega" %}<br>
-              {% trans "Yuz jarohatlarini zamonaviy davolash va ortognatik operatsiyalar" %}<br>
-              {% trans "bo'yicha Rossiya Federatsiyasida malaka oshirgan" %}
+              <strong>{{t.upgrade_and_international_experience}}</strong><br>
+              {{t.master_degree_in_jaw_surgery}}<br>
+              {{t.practical_experience}}
             </p>
           </div>
           <div class="mt-4">
@@ -512,7 +456,7 @@
 
 <section class="py-5 my-5 certificate" aria-label="Litsenziya va sertifikatlar">
   <div class="container-fluid">
-    <h2 class="section-title text-center mb-lg-4 mb-0">{% trans "Litsenziya va Sertifikatlar" %}</h2>
+    <h2 class="section-title text-center mb-lg-4 mb-0">{{t.certificates}}</h2>
     <div class="swiper mySwiper p-5" aria-roledescription="carousel">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -536,15 +480,15 @@
 
  <section class="py-5 bg-light" id="natijalar" aria-labelledby="operations-title">
   <div class="container">
-    <h2 id="operations-title" class="section-title text-center mb-5">{% trans "Amalga oshiriladigan operatsiyalar" %}</h2>
+    <h2 id="operations-title" class="section-title text-center mb-5">{{t.stats_successfuly_operations}}</h2>
     <div class="row g-4">
       <!-- CARD 1 -->
 
       {% for category in categories %}
       <article class="col-lg-3 col-md-6 col-12" role="region" aria-label="{{ category.name }}">
-        <a href="" class="text-decoration-none">
+        <a href="{% url 'main:category_detail' category.slug %}" role="button" class="text-decoration-none">
         <div class="card h-100 shadow-sm border-0">
-          <img src="{{ category.img.url }}" class="card-img-top" alt="{{ category.name }} rasmi" loading="lazy" />
+         <a href="{% url 'main:category_detail' category.slug %}"> <img src="{{ category.img.url }}" class="card-img-top" alt="{{ category.name }} rasmi" loading="lazy" /></a>
           <div class="card-body">
             <h5 class="descriptionitle mb-2 py-2">{{ category.name }}</h5>
             <p class="description text-muted py-2">{{ category.description }}</p>
@@ -564,7 +508,7 @@
   <div class="container position-relative">
     <div class="row align-items-center mb-4">
       <div class="col-sm-12 col-md-6 py-2">
-        <h2 id="patients-operations-title" class="section-title m-0">{% trans "Amalga oshirilgan operatsiyalar" %}</h2>
+        <h2 id="patients-operations-title" class="section-title m-0">{{t.stats_successfuly_operations}}</h2>
       </div>
       <div class="col-sm-12 col-md-6 py-2 text-start text-md-end">
         <div class="swiper-buttons d-inline-flex gap-2" role="group" aria-label="Video slayder boshqaruv tugmalari">
@@ -600,13 +544,12 @@
       <!-- Chap taraf: matn -->
       <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-down">
         <div class="register-info px-3">
-          <h2 id="intl-experience-title" class="fw-bold py-3 title">{% trans "Xalqaro tajriba" %}</h2>
+          <h2 id="intl-experience-title" class="fw-bold py-3 title">{{t.your_health_and_safety}}</h2>
           <p class="text-muted description my-3 mb-4">
-            {% trans "Biz yuz jag’ jarrohligi sohasida 15 yildan ortiq tajribaga ega mutaxassislar jamoasi sifatida,
-            har bir bemor uchun individual va puxta rejalashtirilgan jarrohlik protseduralarini taqdim etamiz." %}
+            {{t.why_us_desp}}
           </p>
           <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">
-            {% trans "QABULGA YOZILISH" %} <i class="fa-solid fa-arrow-right ms-2"></i>
+            {{t.acceptance}} <i class="fa-solid fa-arrow-right ms-2"></i>
           </a>
         </div>
       </div>
@@ -632,35 +575,35 @@
 <section class="faq-section py-5" aria-labelledby="faq-title">
   <div class="container">
     <div class="faq p-md-5 p-3 my-5">
-      <h2 id="faq-title" class="section-title mb-4">{% trans "Savol javoblar" %}</h2>
+      <h2 id="faq-title" class="section-title mb-4">{{t.faq_title}}</h2>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
-          <span>{% trans "Savol: Operatsiyadan so'ng yuzda chandiqlar qoladimi?" %}</span>
+          <span>{{t.faq1_question}}</span>
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question">
-          {% trans "Operatsiyalar asosan og'iz ichi kesmasi bilan amalga oshiriladi va yuzda ko'zga ko'rinarli chandiqlar qolmaydi!" %}
+          {{t.faq1_answer}}
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
-          <span>{% trans "Savol: Operatsiyadan nechi kundan keyin bemalol ovqatlanish mumkin?" %}</span>
+          <span>{{t.faq2_question}}</span>
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question">
-          {% trans "Operatsiyadan 3-5 kundan keyin bemalol ovqatlanishingiz mumkin bo'ladi!" %}
+          {{t.faq2_answer}}
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
-          <span>{% trans "Savol: Operatsiyalar narxi qancha?" %}</span>
+          <span>{{t.faq3_question}}</span>
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question">
-          {% trans "Operatsiya narxi bemorning holatidan kelib chiqib belgilanadi! Ya'ni operatsiyamizning qanchalik og'ir va murakkab ekanligidan kelib chiqadi!" %}
+          {{t.faq3_answer}}
         </div>
       </div>
     </div>
@@ -689,19 +632,19 @@
       <!-- Form -->
       <div class="col-lg-6">
         <div class="bg-white rounded shadow p-4 h-100 d-flex flex-column justify-content-center">
-          <h4 class="fw-bold mb-4">{% trans "Qabulga yozilish" %}</h4>
+          <h4 class="fw-bold mb-4">{{t.acceptance}}</h4>
           <form aria-label="Qabulga yozilish formasi" method="post" >
             {% csrf_token %}
             <div class="mb-3">
-              <label for="name" class="visually-hidden">{% trans "Ismingiz" %}</label>
+              <label for="name" class="visually-hidden">{{t.name}}</label>
               <input id="name" type="text" class="form-control" placeholder="Ваше имя" minlength="3" name = "name" required aria-required="true" />
             </div>
             <div class="mb-3">
-              <label for="phone" class="visually-hidden">{% trans "Telefon raqam" %}</label>
+              <label for="phone" class="visually-hidden">{{t.phone}}</label>
               <input id="text" type="tel" class="form-control" placeholder="912 345-67-89" name = "number" required aria-required="true" />
             </div>
             <button type="submit" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill d-flex align-items-center justify-content-center gap-2" aria-label="Joy band qilish">
-              {% trans "JOY BAND QILISH" %}
+              {{t.acceptance}}
               <span class="arrow" aria-hidden="true">→</span>
             </button>
           </form>
@@ -717,13 +660,12 @@
     <div class="row align-items-center justify-content-between">
       <div class="col-md-8">
         <p class="consultation-text">
-          {% trans "Sizda yoki tanishlaringizda yuqorida sanab o‘tilgan kasalliklar bilan bog‘liq muammolar bormi?<br>
-          Darhol konsultatsiyaga ro‘yxatdan o‘ting yordam berishga tayyormiz!" %}
+          {{t.consultation_desp}}
         </p>
       </div>
       <div class="col-md-4 text-md-end text-center">
         <a href="#" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal" role="button" aria-label="Qabulga yozilish">
-          {% trans "QABULGA YOZILISH" %} <i class="fa-solid fa-arrow-right ms-2"></i>
+          {{t.acceptance}} <i class="fa-solid fa-arrow-right ms-2"></i>
         </a>
       </div>
     </div>
@@ -732,131 +674,9 @@
 
   </main>
 
-  
-  <footer class="site-footer">
-    <div class="container py-4">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <h5 class="text-white mb-3 ">
-            <img
-                src="{% static './assets/images/logo-footer.webp' %}"
-                class="img-fluid"
-                width="100"
-                alt=""
-              />
-            </h5>
-          <div class="d-flex gap-3">
-            <a href="https://www.instagram.com/dr_akmal_khakimov?igsh=Y2h4NmRlbmV5a29s"><i class="fab fa-instagram text-white fs-5"></i></a>
-            <a href="https://www.instagram.com/dr_abobakirov?igsh=MTYwZTNtdzVqOWtscQ=="><i class="fab fa-instagram text-white fs-5"></i></a>
-            <a href="https://youtube.com/@yuzjagjarrxoligiuzbekistan?si=yf1rRZoAG_fLxvOD"><i class="fab fa-youtube text-white fs-5"></i></a>
-          </div>
-          <p class="text-secondary mt-3">&copy; {% trans "2025 Yuz jag' jarrohligi" %}</p>
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <h5 class="text-white mb-3">{% trans "CONTACTS" %}</h5>
-          <p class="text-white mb-1">
-          {% trans "📍 Toshkent: Yashnobod tumani, Olimkent ko‘chasi, 32 uy" %}
-          </p>
-          <p class="text-white mb-1">
-            {% trans "📍 Andijon: Otabekov ko‘chasi, 4-B uy" %}
-          </p>
-          <p class="text-white mb-1">
-            ☎️ Telefon: +998 90 529 53 34
-          </p>
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <h5 class="text-white mb-3">{% trans "ISH VAQTI" %}</h5>
-          <p class="text-white mb-1"><strong>{% trans "Toshkent shahrida:" %}</strong></p>
-          <p class="text-white mb-1">{% trans "Dushanba–Chorshanba: 09:00 - 18:00" %}</p>
-          <p class="text-white mb-1"><strong>{% trans "Andijon shahrida:" %}</strong></p>
-          <p class="text-white mb-1">{% trans "Payshanba–Shanba: 09:00 - 18:00" %}</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-
-
-
-
-
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-4 shadow">
-        
-        <!-- Modal Header -->
-        <div class="modal-header border-0">
-          <h5 class="modal-title fw-bold" id="bookingModalLabel">{% trans "Qabulga yozilish" %}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <!-- Modal Body -->
-        <div class="modal-body">
-          <form method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Ваше имя" required minlength="3" name="name">
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" placeholder="912 345-67-89" required name="number">
-            </div>
-            <button type="submit" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill w-100">
-              {% trans "JOY BAND QILISH" %} <i class="fa-solid fa-arrow-right ms-2"></i>
-            </button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  
-  <style>
-    .alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-.alert-error {
-  color: #721c24;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-  </style>
-  
-  
-      <script>
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, window.location.href );
-        }
-    </script>
-</body>
-
-<!-- Bootstrap 5 JS (body oxirida) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<!-- count up js -->
-
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
-
-<script src="{% static './assets/js/main.js' %}" defer></script>
-  </html>
+{% block scripts %}
+  <script>
+    // Custom scripts can be added here
+  </script>
+  {% endblock %}
+{% endblock %}
