@@ -144,8 +144,12 @@
             <div class="mb-3">
               <input type="text" class="form-control" placeholder="Ваше имя" required minlength="3" name="name">
             </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" placeholder="912 345-67-89" required name="number">
+            <div class="mb-3">  
+              <input id="text" class="form-control" type="tel" 
+                name="number" 
+                placeholder="+998 (xx) xxx-xx-xx" 
+                required 
+                aria-required="true" />
             </div>
             <button type="submit" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill w-100">
               {{t.acceptance}} <i class="fa-solid fa-arrow-right ms-2"></i>

@@ -49,23 +49,6 @@ document.querySelectorAll(".faq-question").forEach(button => {
 });
 
 
-document.querySelectorAll('a.scroll-link').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('data-target');
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) {
-      targetEl.scrollIntoView({ behavior: 'smooth' });
-    }
-    const offcanvasEl = document.querySelector('.offcanvas.show');
-    if (offcanvasEl) {
-      const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
-      offcanvas.hide();
-    }
-  });
-});
-
-
 
 const allThumbs = document.querySelectorAll('.video-thumb');
 let currentIframe = null;
@@ -112,6 +95,10 @@ allThumbs.forEach(thumb => {
     currentThumb = thumb;
   });
 });
+
+
+
+
 
 // 🟡 Funksiya — avvalgi videoni yopish
 function closeCurrentVideo() {
@@ -179,3 +166,92 @@ if (typeof videoSwiper !== 'undefined') {
     counters.forEach(counter => {
       observer.observe(counter);
     });
+
+
+
+
+(function(){
+  const LEADING = "998";
+  const REQUIRED_LEN = 9; 
+  const FULL_DIGITS = LEADING.length + REQUIRED_LEN;
+  const validOperatorPrefixes = ["33","50","55","77","87","88","90","91","93","94","95","97","98","99"];
+
+  function formatUzPhone(digits) {
+    const after = digits.slice(LEADING.length);
+    let out = "+998";
+    if (after.length === 0) return out;
+    out += " (" + after.slice(0, 2);
+    if (after.length < 2) return out;
+    out += ")";
+    if (after.length <= 2) return out;
+    out += " " + after.slice(2, 5);
+    if (after.length <= 5) return out;
+    out += "-" + after.slice(5, 7);
+    if (after.length <= 7) return out;
+    out += "-" + after.slice(7, 9);
+    return out;
+  }
+
+  function extractDigits(s) {
+    return (s || "").replace(/\D/g, "");
+  }
+
+  function validatePhoneField(input, digits) {
+    if (digits.length < FULL_DIGITS) {
+      input.setCustomValidity("Telefon nomerni to'liq kiriting");
+      return;
+    }
+    if (digits.length > FULL_DIGITS) {
+      input.setCustomValidity("Telefon juda uzun");
+      return;
+    }
+    const op = digits.slice(LEADING.length, LEADING.length + 2);
+    if (!validOperatorPrefixes.includes(op)) {
+      input.setCustomValidity("Telefon operator kodi noto'g'ri");
+      return;
+    }
+    input.setCustomValidity("");
+  }
+
+  document.querySelectorAll('input[name="number"]').forEach(input => {
+    if (!input.value) input.value = "+998 ";
+
+    // O‘chirishni bloklash (Backspace va Delete uchun)
+    input.addEventListener('keydown', function(e){
+      const cursorPos = input.selectionStart;
+      // +998 dan oldin yoki ichida bo‘lsa o‘chirishni bloklash
+      if ((e.key === "Backspace" && cursorPos <= 5) || 
+          (e.key === "Delete" && cursorPos < 5)) {
+        e.preventDefault();
+      }
+    });
+
+    // Yozishda
+    input.addEventListener('input', function(e){
+      let pos = input.selectionStart;
+      let ds = extractDigits(input.value);
+
+      if (!ds.startsWith(LEADING)) ds = LEADING + ds.replace(/^0+/, '');
+      ds = ds.slice(0, FULL_DIGITS);
+
+      input.value = formatUzPhone(ds);
+      validatePhoneField(input, ds);
+
+      if (e.inputType === 'deleteContentBackward' && pos > 0) {
+        input.setSelectionRange(pos, pos);
+      }
+    });
+
+    // Paste
+    input.addEventListener('paste', function(e){
+      e.preventDefault();
+      let ds = extractDigits(e.clipboardData.getData('text'));
+      if (!ds.startsWith(LEADING)) ds = LEADING + ds;
+      ds = ds.slice(0, FULL_DIGITS);
+      input.value = formatUzPhone(ds);
+      validatePhoneField(input, ds);
+    });
+
+    validatePhoneField(input, extractDigits(input.value));
+  });
+})();

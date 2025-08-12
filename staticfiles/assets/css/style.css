@@ -93,7 +93,7 @@
 
 .dropdown-item.active {
   font-weight: 700;
-  color: #ffc107; /* Bootstrap warning rangiga yaqin */
+  color: #fff; /* Bootstrap warning rangiga yaqin */
 }
 
 .section-title {
@@ -106,13 +106,15 @@
         min-height: 100vh;
     }
     .hero-left {
-        background-color: #315EFF;
+        background-color: #232C51!important;
         width: 40%;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 2rem;
         color: white;
+        background: no-repeat center center;
+        background-size: contain;
     }
 
 
@@ -137,7 +139,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
-            background: none;
+            background: none!important;
             padding: 1.5rem;
             border-radius: 10px;
             z-index: 2;
@@ -154,6 +156,23 @@
             object-position: 40% center!important;
         }
     }
+
+
+
+        /* Default - desktop */
+    .last-image {
+        object-fit: cover; /* yoki scale */
+        object-position: center -120px;
+    }
+
+    /* Mobile uchun */
+    @media (max-width: 992px) {
+        .last-image {
+            object-position: center -60px;
+        }
+    }
+
+
 .counter{
   font-weight: bold;
   font-size: var(--section-title-xl);

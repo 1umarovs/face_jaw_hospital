@@ -18,8 +18,17 @@ CHAT_ID = os.getenv("CHAT_ID")
 
 
 def is_valid_uzbek_phone(phone):
+    # +998 dan keyin 2 xonali operator kodi va 7 xonali raqam bo'lishi kerak
     return bool(re.match(r'^\+998(33|50|55|77|87|88|90|91|93|94|95|97|98|99)\d{7}$', phone))
 
+
+def clean_phone_number(raw_number):
+    # Faqat raqamlarni qoldiramiz
+    digits_only = re.sub(r'\D', '', raw_number)  # 998941234567
+    # Agar boshida 998 bo'lmasa, avtomatik qo'shmaymiz (frontend allaqachon qo'yadi)
+    if digits_only.startswith("998"):
+        return "+" + digits_only
+    return "+" + digits_only  # fallback
 
 def send_telegram_message(bot_token, chat_id, message):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -47,22 +56,22 @@ class homePage(View):
     def post(self, request):
         name = request.POST.get('name')
         number = request.POST.get('number')
-        print(name, number)
 
-        patients = Patients.objects.all()  # qayta render uchun
+        patients = Patients.objects.all()
 
-        # 🔸 1. Bo‘sh joylarni tekshirish
         if not all([name, number]):
             messages.error(request, "Ism va telefon raqamini to‘ldiring!")
             return render(request, 'index.html', {'patients': patients})
 
-        # 🔸 2. Telefon formatini tekshirish
-        number = number.replace(' ', '')
+        # ✅ Raqamni tozalash
+        number = clean_phone_number(number)
+
+        # ✅ Format tekshirish
         if not is_valid_uzbek_phone(number):
             messages.error(request, "Telefon raqami noto‘g‘ri formatda! (+998 9X XXX XX XX)")
             return render(request, 'index.html', {'patients': patients})
 
-        # 🔸 3. Bazaga yozish
+        # Bazaga yozish
         try:
             ContactUs.objects.create(name=name, number=number)
         except Exception as e:
@@ -70,7 +79,7 @@ class homePage(View):
             messages.error(request, "Maʼlumotni saqlab boʻlmadi.")
             return render(request, 'index.html', {'patients': patients})
 
-        # 🔸 4. Telegramga yuborish
+        # Telegramga yuborish
         message = f"📥 Yangi murojaat:\n👤 Ism: {name}\n📞 Raqam: {number}"
         send_telegram_message(BOT_TOKEN, CHAT_ID, message)
 
@@ -113,7 +122,9 @@ def categoryDetail(request, slug):
         messages.error(request, "Ism va telefon raqamini to‘ldiring!")
         return render(request, 'category_detail.html', context)
 
-    number = number.replace(' ', '')
+    # ✅ Raqamni tozalash
+    number = clean_phone_number(number)
+
     if not is_valid_uzbek_phone(number):
         messages.error(request, "Telefon raqami noto‘g‘ri formatda! (+998 9X XXX XX XX)")
         return render(request, 'category_detail.html', context)
@@ -130,4 +141,5 @@ def categoryDetail(request, slug):
 
     messages.success(request, "Muvaffaqiyatli yuborildi!")
     return redirect('main:category_detail', slug=slug)
+
 

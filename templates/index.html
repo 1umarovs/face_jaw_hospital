@@ -10,205 +10,117 @@
     <div class="container d-flex justify-content-between align-items-center">
       
       <!-- Logo -->
-          <a
-            class="navbar-brand fw-bold text-white"
-            href="#"
-            aria-label="Bosh sahifa"
-          >
-            <img
-              src="{% static './assets/images/logo.webp' %}"
-              alt="Yuz jag’ Jarrohligi logotipi"
-              class="img-fluid d-none d-lg-block"
-              style="max-width: 175px; height: auto"
-              loading="eager"
-              decoding="async"
-              width="175"
-              height="60"
-            />
-            <img
-              src="{% static './assets/images/logo-sm.webp' %}"
-              alt="Yuz jag’ Jarrohligi kichik logotipi"
-              class="img-fluid d-lg-none d-block"
-              style="max-width: 175px; height: auto"
-              loading="eager"
-              decoding="async"
-              width="175"
-              height="60"
-            />
-          </a>
+      <a class="navbar-brand fw-bold text-white" href="#" aria-label="Bosh sahifa">
+        <img src="{% static './assets/images/logo.webp' %}" alt="Yuz jag’ Jarrohligi logotipi"
+             class="img-fluid d-none d-lg-block"
+             style="max-width: 175px; height: auto"
+             width="175" height="60" loading="eager" decoding="async">
+        <img src="{% static './assets/images/logo-sm.webp' %}" alt="Yuz jag’ Jarrohligi kichik logotipi"
+             class="img-fluid d-lg-none d-block"
+             style="max-width: 175px; height: auto"
+             width="175" height="60" loading="eager" decoding="async">
+      </a>
 
       <!-- Desktop Nav -->
       <ul class="navbar-nav d-none d-lg-flex flex-row gap-4" role="menubar">
-        <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#" role="menuitem" tabindex="0">{{ t.doctors }}</a>
-        </li>
-        <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="natijalar" href="#" role="menuitem" tabindex="0">{{ t.results }}</a>
-        </li>
-        <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="bemorlar" href="#" role="menuitem" tabindex="0">{{ t.patients }}</a>
-        </li>
+        <li class="nav-item"><a class="nav-link text-white scroll-link" data-target="shifokorlar" href="#">{{ t.doctors }}</a></li>
+        <li class="nav-item"><a class="nav-link text-white scroll-link" data-target="natijalar" href="#">{{ t.results }}</a></li>
+        <li class="nav-item"><a class="nav-link text-white scroll-link" data-target="bemorlar" href="#">{{ t.patients }}</a></li>
       </ul>
 
       <div class="d-flex align-items-center gap-3">
 
-        <!-- Language Dropdown -->
-      {% get_current_language as LANGUAGE_CODE %}
-<div class="dropdown d-none d-lg-block">
-  <a 
-    class="text-white dropdown-toggle text-decoration-none small" 
-    href="#" 
-    role="button" 
-    id="languageDropdown" 
-    data-bs-toggle="dropdown" 
-    aria-expanded="false" 
-    aria-haspopup="true"
-  >
-    {% if LANGUAGE_CODE == 'uz' %}
-      UZB
-    {% else %}
-      RUS
-    {% endif %}
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
-    <li>
-      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <input type="hidden" name="language" value="uz">
-        <button type="submit" 
-                class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
-                role="menuitem">
-          UZB
-        </button>
-      </form>
-    </li>
-    <li>
-      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <input type="hidden" name="language" value="ru">
-        <button type="submit" 
-                class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
-                role="menuitem">
-          RUS
-        </button>
-      </form>
-    </li>
-  </ul>
-</div>
+        <!-- Language Dropdown (desktop) -->
+        {% get_current_language as LANGUAGE_CODE %}
+        <div class="dropdown d-none d-lg-block">
+          <a class="text-white dropdown-toggle small" href="#" id="languageDropdown" data-bs-toggle="dropdown">
+            {% if LANGUAGE_CODE == 'uz' %} Uz {% else %} Ru {% endif %}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <input type="hidden" name="language" value="uz">
+                <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}">Uz</button>
+              </form>
+            </li>
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <input type="hidden" name="language" value="ru">
+                <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">Ru</button>
+              </form>
+            </li>
+          </ul>
+        </div>
 
         <!-- Consultation Button -->
-        <a 
-          href="#" 
-          class="btn btn-warning fw-semibold px-3 py-2 rounded-pill d-none d-lg-inline-block" 
-          data-bs-toggle="modal" 
-          data-bs-target="#bookingModal" 
-          role="button"
-        >
+        <a href="#" class="btn btn-warning fw-semibold px-3 py-2 rounded-pill d-none d-lg-inline-block" 
+           data-bs-toggle="modal" data-bs-target="#bookingModal">
           {{ t.consultation }} <i class="fa-solid fa-arrow-right ms-2"></i>
         </a>
 
-        <!-- Mobile hamburger -->
-        <button 
-          class="navbar-toggler border-0 d-lg-none" 
-          type="button" 
-          data-bs-toggle="offcanvas" 
-          data-bs-target="#mobileMenu" 
-          aria-controls="mobileMenu" 
-          aria-label="Mobil menyuni ochish"
-        >
-          <i class="fa-solid fa-bars text-light"></i>
-        </button>
-
+              <!-- Mobile hamburger -->
+      <button class="navbar-toggler border-0 d-lg-none"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mobileMenu"
+              aria-controls="mobileMenu"
+              aria-label="Mobil menyuni ochish">
+        <i class="fa-solid fa-bars text-light"></i>
+      </button>
       </div>
     </div>
   </nav>
 </header>
 
 <!-- Offcanvas Mobile Menu -->
-<div 
-  class="offcanvas offcanvas-start text-white" 
-  tabindex="-1" 
-  id="mobileMenu" 
-  aria-labelledby="mobileMenuLabel" 
-  style="background-color: #5475FD;"
->
+<div class="offcanvas offcanvas-start text-white" tabindex="-1" id="mobileMenu" style="background-color: #5475FD;">
   <div class="offcanvas-header">
-    <h5 id="mobileMenuLabel" class="offcanvas-title fw-bold">
-          <img
-            src="{% static './assets/images/logo-sm.webp' %}"
-            class="img-fluid"
-            width="150"
-            alt="Yuz jag’ Jarrohligi logotipi"
-          />
+    <h5 class="offcanvas-title fw-bold">
+      <img src="{% static './assets/images/logo-sm.webp' %}" width="150" alt="Yuz jag’ Jarrohligi logotipi">
     </h5>
-    <button 
-      type="button" 
-      class="btn-close btn-close-white" 
-      data-bs-dismiss="offcanvas" 
-      aria-label="Yopish"
-    ></button>
+    <button type="button" class="btn-close btn-close-white" 
+        data-bs-dismiss="offcanvas" 
+        aria-label="Menyuni yopish"></button>
+
   </div>
   <div class="offcanvas-body d-flex flex-column justify-content-between">
 
     <nav>
-      <ul class="navbar-nav mb-4" role="menu">
-        <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="doctors" href="#" role="menuitem" tabindex="0">{{ t.doctors }}</a>
-        </li>
-        <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="results" href="#" role="menuitem" tabindex="0">{{ t.results }}</a>
-        </li>
-        <li class="nav-item" role="none">
-          <a class="nav-link text-white scroll-link" data-target="patients" href="#" role="menuitem" tabindex="0">{{ t.patients }}</a>
-        </li>
+      <ul class="navbar-nav mb-4">
+        <li class="nav-item"><a class="nav-link text-white scroll-link" data-target="doctors" href="#">{{ t.doctors }}</a></li>
+        <li class="nav-item"><a class="nav-link text-white scroll-link" data-target="results" href="#">{{ t.results }}</a></li>
+        <li class="nav-item"><a class="nav-link text-white scroll-link" data-target="patients" href="#">{{ t.patients }}</a></li>
       </ul>
     </nav>
 
-<div class="dropdown mb-4">
-  <a 
-    class="text-white dropdown-toggle text-decoration-none small" 
-    href="#" 
-    role="button" 
-    id="languageDropdown" 
-    data-bs-toggle="dropdown" 
-    aria-expanded="false" 
-    aria-haspopup="true"
-  >
-    {% if LANGUAGE_CODE == 'uz' %}
-      UZB
-    {% else %}
-      RUS
-    {% endif %}
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" role="menu">
-    <li>
-      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <input type="hidden" name="language" value="uz">
-        <button type="submit" 
-                class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" 
-                role="menuitem">
-          UZB
-        </button>
-      </form>
-    </li>
-    <li>
-      <form action="{% url 'set_language' %}" method="post" class="m-0 p-0">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <input type="hidden" name="language" value="ru">
-        <button type="submit" 
-                class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" 
-                role="menuitem">
-          RUS
-        </button>
-      </form>
-    </li>
-  </ul>
-</div>
+    <!-- Language Dropdown (mobile) -->
+    <div class="dropdown mb-4">
+      <a class="text-white dropdown-toggle small" href="#" id="languageDropdownMobile" data-bs-toggle="dropdown">
+        {% if LANGUAGE_CODE == 'uz' %} Uz {% else %} Ru {% endif %}
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdownMobile">
+        <li>
+          <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <input type="hidden" name="language" value="uz">
+            <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == 'uz' %}active{% endif %}">Uz</button>
+          </form>
+        </li>
+        <li>
+          <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <input type="hidden" name="language" value="ru">
+            <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">Ru</button>
+          </form>
+        </li>
+      </ul>
+    </div>
 
     <address class="small mb-0">
       <p class="fw-semibold mb-1">{{ t.address }}</p>
@@ -217,13 +129,13 @@
       <p class="mb-0">☎️ +998 90 529 53 34</p>
     </address>
 
-    <div class="d-flex gap-3 mt-4" aria-label="Ijtimoiy tarmoqlar">
-      <a href="https://www.instagram.com/dr_abobakirov" class="text-white fs-5" aria-label="Instagram - dr_abobakirov"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.instagram.com/dr_akmal_khakimov" class="text-white fs-5" aria-label="Instagram - dr_akmal_khakimov"><i class="fa-brands fa-instagram"></i></a>
+    <div class="d-flex gap-3 mt-4">
+      <a href="https://www.instagram.com/dr_abobakirov" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.instagram.com/dr_akmal_khakimov" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
     </div>
-
   </div>
 </div>
+
 
   <!-- start main -->
 
@@ -234,10 +146,10 @@
 
   <!-- HERO SECTION -->
 <section class="hero position-relative">
-    <div class="hero-left">
+    <div class="hero-left" style="background-image: url({% static 'assets/images/skelton.png' %});">
         <div class="container position-absolute translate-middles" >
-            <h1 class="section-title">{{ t.hero_title }}</h1>
-            <p class="description">{{ t.hero_desp }}</p>
+            <h1 class="section-title py-lg-0 py-2 mt-3">{{ t.hero_title }}</h1>
+            <p class="description py-lg-0 py-2">{{ t.hero_desp }}</p>
             <a href="#" 
                class="btn btn-warning fw-semibold px-4 py-2 rounded-pill" 
                data-bs-toggle="modal" 
@@ -416,7 +328,7 @@
       <!-- Shifokor 2: Rasm -->
       <div class="col-lg-6 d-flex" data-aos="fade-right">
         <img src="{% static './assets/images/second-doctor.jpg' %}" alt="Akmal Hakimov" 
-             class="img-fluid rounded w-100 " style="object-fit: cover;aspect-ratio: 4/5;"/>
+             class="img-fluid rounded w-100 " style="object-fit: cover;aspect-ratio: 3/3;object-position: top center;"/>
       </div>
 
       <!-- Shifokor 2: Ma'lumot -->
@@ -545,17 +457,13 @@
       </div>
 
       <!-- O'ng taraf: video iframe -->
+
       <div class="col-lg-6 text-center" data-aos="fade-up">
-        <div class="register-video rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9;">
-          <iframe
-            src="https://www.youtube.com/embed/jkyFrW6NQT0?si=8MRkxNuIqyIJVtNB" 
-            title="Xalqaro tajriba haqida YouTube video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-            style="width: 100%; height: 100%; border: none; border-radius: 16px;">
-          </iframe>
-        </div>
+          <div class="register-video rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9;">
+              <img src="{% static 'assets/images/last-images.jpg' %}" 
+                  class=" w-100 last-image"
+                  alt="">
+          </div>
       </div>
 
     </div>
@@ -631,8 +539,12 @@
             </div>
             <div class="mb-3">
               <label for="phone" class="visually-hidden">{{t.phone}}</label>
-              <input id="text" type="tel" class="form-control" placeholder="912 345-67-89" name = "number" required aria-required="true" />
-            </div>
+              <input id="text" class="form-control" type="tel" 
+                name="number" 
+                placeholder="+998 (xx) xxx-xx-xx" 
+                required 
+                aria-required="true" />
+              </div>
             <button type="submit" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill d-flex align-items-center justify-content-center gap-2" aria-label="Joy band qilish">
               {{t.acceptance}}
               <span class="arrow" aria-hidden="true">→</span>
@@ -666,7 +578,14 @@
 
 {% block scripts %}
   <script>
-    // Custom scripts can be added here
+document.querySelectorAll('.offcanvas a').forEach(link => {
+  link.addEventListener('click', () => {
+    const offcanvasEl = document.querySelector('.offcanvas.show');
+    if (offcanvasEl) {
+      bootstrap.Offcanvas.getInstance(offcanvasEl).hide();
+    }
+  });
+});
   </script>
   {% endblock %}
 {% endblock %}
