@@ -394,6 +394,10 @@
           <div class="card-body">
             <h5 class="descriptionitle mb-2 py-2">{{ category.name }}</h5>
             <p class="description text-muted py-2">{{ category.description }}</p>
+            <a href="{% url 'main:category_detail' category.slug %}" class="btn btn-warning fw-semibold px-4 py-2 rounded-pill d-flex align-items-center justify-content-center gap-2" aria-label="Joy band qilish">
+              {{t.detailed}}
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
         </a>
