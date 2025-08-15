@@ -49,7 +49,8 @@ def get_text(language):
             'in_andijan':"Andijon shahrida",
             'in_tashkent':"Toshkent shahrida",
             'tashkent_time':"Dushanba–Chorshanba: 09:00 - 18:00",
-            'andijan_time':"Payshanba–Shanba: 09:00 - 18:00"
+            'andijan_time':"Payshanba–Shanba: 09:00 - 18:00",
+            'detailed':'Batafsil',
 
         },
         'ru':{
@@ -101,7 +102,8 @@ def get_text(language):
             'in_andijan':"В Андижане",
             'in_tashkent':"В Ташкенте",
             'tashkent_time':"Понедельник–среда: 09:00 - 18:00",
-            'andijan_time':"Четверг–Суббота: 09:00 - 18:00"
+            'andijan_time':"Четверг–Суббота: 09:00 - 18:00",
+            'detailed':'подробно'
 
         }
     }[language]
