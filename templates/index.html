@@ -582,11 +582,16 @@
 
 {% block scripts %}
   <script>
-document.querySelectorAll('.offcanvas a').forEach(link => {
-  link.addEventListener('click', () => {
-    const offcanvasEl = document.querySelector('.offcanvas.show');
-    if (offcanvasEl) {
-      bootstrap.Offcanvas.getInstance(offcanvasEl).hide();
+document.querySelectorAll('.scroll-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // default sakrashni to'xtatish
+    const targetId = this.dataset.target; // data-target dan olish
+    const targetEl = document.getElementById(targetId); // id bo'yicha topish
+    if (targetEl) {
+      targetEl.scrollIntoView({
+        behavior: 'smooth', // yumshoq scroll
+        block: 'start'
+      });
     }
   });
 });
